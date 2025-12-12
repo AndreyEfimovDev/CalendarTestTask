@@ -8,10 +8,20 @@
 import SwiftUI
 
 @main
-struct CalendarTestTaskApp: App {
+struct WorkoutCalendarApp: App {
+    
+//    @StateObject private var coordinator = AppCoordinator(apiService: TestDataService())
+    
+    @StateObject private var coordinator = AppCoordinator(apiService: MockDataService())
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            coordinator.rootView
+                .environmentObject(coordinator)
+                .preferredColorScheme(.light)
+                .onAppear {
+                    print("🚀 Приложение запущено")
+                }
         }
     }
 }
