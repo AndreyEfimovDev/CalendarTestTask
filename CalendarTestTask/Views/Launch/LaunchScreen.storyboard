@@ -16,12 +16,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="obG-Y5-kRd">
-                                <rect key="frame" x="0.0" y="852" width="393" height="0.0"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DF8-ug-afI">
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                                 <subviews>
@@ -48,7 +42,6 @@
                             <constraint firstItem="DF8-ug-afI" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="5ZW-3X-EbP"/>
                             <constraint firstItem="DF8-ug-afI" firstAttribute="leading" secondItem="Bcu-3y-fUS" secondAttribute="leading" id="BkL-WS-FUx"/>
                             <constraint firstItem="DF8-ug-afI" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="FaI-P3-BN8"/>
-                            <constraint firstItem="obG-Y5-kRd" firstAttribute="top" secondItem="DF8-ug-afI" secondAttribute="bottom" id="TQK-dT-ZFb"/>
                             <constraint firstItem="Bcu-3y-fUS" firstAttribute="trailing" secondItem="DF8-ug-afI" secondAttribute="trailing" id="Zro-uS-QgN"/>
                         </constraints>
                     </view>

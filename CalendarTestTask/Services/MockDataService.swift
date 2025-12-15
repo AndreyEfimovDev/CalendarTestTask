@@ -238,3 +238,6 @@ struct WorkoutDiagramData: Codable {
     let data: [DiagramData]
     let states: [String]
 }
+
+
+

@@ -70,4 +70,41 @@ class HeartRateChartIntegrationTest: XCTestCase {
         }
         return data
     }
+    
+    
+    func testHeartRateChartWithEmptyData() {
+        // Given
+        let emptyData: [DiagramData] = []
+        
+        // When
+        let chartView = HeartRateChartView(diagramData: emptyData)
+        let hostingController = UIHostingController(rootView: chartView)
+        
+        // Then: проверяем что view создается без данных
+        XCTAssertNotNil(chartView)
+        XCTAssertNotNil(hostingController.view)
+    }
+
+    func testHeartRateChartPerformance() {
+        // Given: большой объем данных
+        var largeData: [DiagramData] = []
+        for i in 0..<1000 {
+            largeData.append(DiagramData(
+                timeNumeric: i,
+                heartRate: 60 + i % 40,
+                speedKmh: Double(i % 20) * 0.5,
+                distanceMeters: i * 10,
+                steps: i * 50,
+                elevation: Double(i % 100),
+                latitude: 55.7558,
+                longitude: 37.6173,
+                temperatureCelsius: 20.0,
+                currentLayer: 0,
+                currentSubLayer: 0,
+                currentTimestamp: Date()
+            ))
+        }
+        
+    }
+
 }

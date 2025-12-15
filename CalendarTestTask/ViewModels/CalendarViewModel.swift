@@ -247,5 +247,19 @@ class CalendarViewModel: ObservableObject {
             selectedDate = coordinatorDate
         }
     }
+    
+    
+    func setWorkouts(_ workouts: [Workout]) {
+        self.workouts = workouts
+    }
+    
+#if DEBUG || TESTING
+    func setTestWorkouts(_ workouts: [Workout]) {
+        self.workouts = workouts
+        //        self.filteredWorkouts = workouts // если есть такое свойство
+        self.isLoading = false // если есть индикатор загрузки
+    }
+#endif
+
 }
 
