@@ -80,40 +80,6 @@ struct DayEventsView: View {
 }
 
 // Компонент карточки тренировки
-struct WorkoutCard: View {
-    let workout: Workout
-    
-    var body: some View {
-        HStack(spacing: 12) {
-            // Иконка типа тренировки
-            Image(systemName: workout.workoutActivityType.icon)
-                .font(.title2)
-                .foregroundColor(workout.workoutActivityType.color)
-                .frame(width: 40, height: 40)
-                .background(workout.workoutActivityType.color.opacity(0.1))
-                .clipShape(Circle())
-            
-            VStack(alignment: .leading, spacing: 4) {
-                Text(workout.workoutActivityType.localizedName)
-                    .font(.headline)
-                    .foregroundColor(.primary)
-                
-                Text(workout.timeString)
-                    .font(.subheadline)
-                    .foregroundColor(.secondary)
-            }
-            
-            Spacer()
-            
-            Image(systemName: "chevron.right")
-                .font(.caption)
-                .foregroundColor(.gray)
-        }
-        .padding(.vertical, 8)
-        .contentShape(Rectangle()) // Делаем всю область кликабельной
-    }
-}
-
 
 #Preview {
     let apiService = MockDataService()

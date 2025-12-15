@@ -47,6 +47,8 @@
 		4727796B2EEC1FF300601CED /* HeartRateChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4727796A2EEC1FF300601CED /* HeartRateChartView.swift */; };
 		4727796E2EEC205000601CED /* CalendarViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4727796D2EEC205000601CED /* CalendarViewModelTests.swift */; };
 		47742BA32EEC28980041F6F5 /* HeartRateChartIntegrationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47742BA22EEC28980041F6F5 /* HeartRateChartIntegrationTest.swift */; };
+		479EFC1D2EF01B5100C0A9C7 /* DayWorkoutsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 479EFC1C2EF01B5100C0A9C7 /* DayWorkoutsSection.swift */; };
+		479EFC1F2EF0220B00C0A9C7 /* WorkoutCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 479EFC1E2EF0220B00C0A9C7 /* WorkoutCard.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,6 +106,8 @@
 		4727796A2EEC1FF300601CED /* HeartRateChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartRateChartView.swift; sourceTree = "<group>"; };
 		4727796D2EEC205000601CED /* CalendarViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModelTests.swift; sourceTree = "<group>"; };
 		47742BA22EEC28980041F6F5 /* HeartRateChartIntegrationTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartRateChartIntegrationTest.swift; sourceTree = "<group>"; };
+		479EFC1C2EF01B5100C0A9C7 /* DayWorkoutsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayWorkoutsSection.swift; sourceTree = "<group>"; };
+		479EFC1E2EF0220B00C0A9C7 /* WorkoutCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutCard.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -239,6 +243,8 @@
 				4727792D2EEC080900601CED /* CalendarHeader.swift */,
 				4727793E2EEC09AB00601CED /* LoadingView.swift */,
 				4727796A2EEC1FF300601CED /* HeartRateChartView.swift */,
+				479EFC1C2EF01B5100C0A9C7 /* DayWorkoutsSection.swift */,
+				479EFC1E2EF0220B00C0A9C7 /* WorkoutCard.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -456,6 +462,8 @@
 				4727791A2EEC016000601CED /* Workout.swift in Sources */,
 				4727794B2EEC0F5900601CED /* DayEventsViewModel.swift in Sources */,
 				472779232EEC04F100601CED /* AppCoordinator.swift in Sources */,
+				479EFC1D2EF01B5100C0A9C7 /* DayWorkoutsSection.swift in Sources */,
+				479EFC1F2EF0220B00C0A9C7 /* WorkoutCard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

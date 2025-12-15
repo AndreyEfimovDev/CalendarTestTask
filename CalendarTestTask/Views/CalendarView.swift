@@ -30,6 +30,8 @@ struct CalendarView: View {
                         onNext: viewModel.goToNextMonth,
                         onToday: {
                             viewModel.currentDate = coordinator.initialCalendarDate
+                            viewModel.resetSelectedDate() // ✅ Используем метод
+
                         }
                     )
                     
@@ -37,21 +39,29 @@ struct CalendarView: View {
                     CalendarGridView(viewModel: viewModel)
                     
                     // Сегодняшние тренировки
-                    if Calendar.current.isDate(viewModel.currentDate, equalTo: coordinator.initialCalendarDate, toGranularity: .month) {
-                        TodayWorkoutsSection(viewModel: viewModel)
-                    }
+//                    if Calendar.current.isDate(viewModel.currentDate, equalTo: coordinator.initialCalendarDate, toGranularity: .month) {
+//                        TodayWorkoutsSection(viewModel: viewModel)
+//                    }
+                    
+                    // ✅ Блок тренировок - берем дату из viewModel
+                    DayWorkoutsSection(
+                        date: viewModel.selectedDate ?? coordinator.initialCalendarDate,
+                        workouts: viewModel.workoutsForDay(
+                            viewModel.selectedDate ?? coordinator.initialCalendarDate
+                        )
+                    )
                 }
             }
             .padding()
         }
         .navigationTitle("Календарь тренировок")
         .navigationBarTitleDisplayMode(.inline)
-        .sheet(isPresented: $viewModel.showingDayEvents) {
-            NavigationStack {
-                coordinator.dayEventsView(for: viewModel.selectedDate)
-            }
-            .presentationDetents([.medium, .large])
-        }
+//        .sheet(isPresented: $viewModel.showingDayEvents) {
+//            NavigationStack {
+//                coordinator.dayEventsView(for: viewModel.selectedDate)
+//            }
+//            .presentationDetents([.medium, .large])
+//        }
         .overlay {
             if viewModel.isLoading {
                 LoadingView()
@@ -66,6 +76,11 @@ struct CalendarView: View {
             }
         } message: {
             Text(viewModel.errorMessage ?? "Неизвестная ошибка")
+        }
+        .onAppear {
+            // ✅ Восстанавливаем состояние при возврате
+            viewModel.syncWithCoordinator()
+
         }
     }
 }

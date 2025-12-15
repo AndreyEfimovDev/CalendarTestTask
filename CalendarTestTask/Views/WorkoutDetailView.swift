@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct WorkoutDetailView: View {
+    
     @StateObject private var viewModel: WorkoutDetailViewModel
     @Environment(\.dismiss) private var dismiss
     
@@ -55,13 +56,13 @@ struct WorkoutDetailView: View {
         }
         .navigationTitle("Детали тренировки")
         .navigationBarTitleDisplayMode(.inline)
-        .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing) {
-                Button("Готово") {
-                    dismiss()
-                }
-            }
-        }
+//        .toolbar {
+//            ToolbarItem(placement: .navigationBarTrailing) {
+//                Button("Готово") {
+//                    dismiss()
+//                }
+//            }
+//        }
         .alert("Ошибка", isPresented: .constant(viewModel.errorMessage != nil)) {
             Button("OK") { viewModel.errorMessage = nil }
         } message: {
