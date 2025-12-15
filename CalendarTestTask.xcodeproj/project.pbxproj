@@ -49,6 +49,8 @@
 		47742BA32EEC28980041F6F5 /* HeartRateChartIntegrationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47742BA22EEC28980041F6F5 /* HeartRateChartIntegrationTest.swift */; };
 		479EFC1D2EF01B5100C0A9C7 /* DayWorkoutsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 479EFC1C2EF01B5100C0A9C7 /* DayWorkoutsSection.swift */; };
 		479EFC1F2EF0220B00C0A9C7 /* WorkoutCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 479EFC1E2EF0220B00C0A9C7 /* WorkoutCard.swift */; };
+		479EFC212EF0323000C0A9C7 /* PreferencesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 479EFC202EF0323000C0A9C7 /* PreferencesView.swift */; };
+		479EFC242EF032C300C0A9C7 /* UnderlineSermentedPickerNotOptional.swift in Sources */ = {isa = PBXBuildFile; fileRef = 479EFC232EF032C300C0A9C7 /* UnderlineSermentedPickerNotOptional.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -108,6 +110,8 @@
 		47742BA22EEC28980041F6F5 /* HeartRateChartIntegrationTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartRateChartIntegrationTest.swift; sourceTree = "<group>"; };
 		479EFC1C2EF01B5100C0A9C7 /* DayWorkoutsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayWorkoutsSection.swift; sourceTree = "<group>"; };
 		479EFC1E2EF0220B00C0A9C7 /* WorkoutCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutCard.swift; sourceTree = "<group>"; };
+		479EFC202EF0323000C0A9C7 /* PreferencesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesView.swift; sourceTree = "<group>"; };
+		479EFC232EF032C300C0A9C7 /* UnderlineSermentedPickerNotOptional.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlineSermentedPickerNotOptional.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -233,6 +237,7 @@
 				472779462EEC0D2F00601CED /* WorkoutDetailView.swift */,
 				472779482EEC0E4100601CED /* Calendar */,
 				4727792C2EEC07E700601CED /* Components */,
+				479EFC222EF0323D00C0A9C7 /* Preferences */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -290,6 +295,15 @@
 				472779662EEC1D6900601CED /* CodableHelpers.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		479EFC222EF0323D00C0A9C7 /* Preferences */ = {
+			isa = PBXGroup;
+			children = (
+				479EFC202EF0323000C0A9C7 /* PreferencesView.swift */,
+				479EFC232EF032C300C0A9C7 /* UnderlineSermentedPickerNotOptional.swift */,
+			);
+			path = Preferences;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -447,9 +461,11 @@
 				4727792B2EEC078600601CED /* CalendarView.swift in Sources */,
 				4727794D2EEC115100601CED /* WorkoutDetailViewModel.swift in Sources */,
 				472779212EEC01F100601CED /* APIService.swift in Sources */,
+				479EFC242EF032C300C0A9C7 /* UnderlineSermentedPickerNotOptional.swift in Sources */,
 				4727796B2EEC1FF300601CED /* HeartRateChartView.swift in Sources */,
 				4727791C2EEC019400601CED /* WorkoutMetadata.swift in Sources */,
 				4727793F2EEC09AB00601CED /* LoadingView.swift in Sources */,
+				479EFC212EF0323000C0A9C7 /* PreferencesView.swift in Sources */,
 				4727790D2EEC012000601CED /* CalendarTestTaskApp.swift in Sources */,
 				4727791E2EEC01BE00601CED /* DiagramData.swift in Sources */,
 				4727793B2EEC093600601CED /* DateFormatter.swift in Sources */,

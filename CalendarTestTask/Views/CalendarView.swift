@@ -12,6 +12,8 @@ struct CalendarView: View {
     @StateObject private var viewModel: CalendarViewModel
     @EnvironmentObject private var coordinator: AppCoordinator
     
+    @State private var showPreferancesView: Bool = false
+    
     init(viewModel: CalendarViewModel) {
         _viewModel = StateObject(wrappedValue: viewModel)
     }
@@ -30,18 +32,12 @@ struct CalendarView: View {
                         onNext: viewModel.goToNextMonth,
                         onToday: {
                             viewModel.currentDate = coordinator.initialCalendarDate
-                            viewModel.resetSelectedDate() // ✅ Используем метод
-
+                            viewModel.resetSelectedDate()
                         }
                     )
                     
                     // Календарь
                     CalendarGridView(viewModel: viewModel)
-                    
-                    // Сегодняшние тренировки
-//                    if Calendar.current.isDate(viewModel.currentDate, equalTo: coordinator.initialCalendarDate, toGranularity: .month) {
-//                        TodayWorkoutsSection(viewModel: viewModel)
-//                    }
                     
                     // ✅ Блок тренировок - берем дату из viewModel
                     DayWorkoutsSection(
@@ -56,12 +52,21 @@ struct CalendarView: View {
         }
         .navigationTitle("Календарь тренировок")
         .navigationBarTitleDisplayMode(.inline)
-//        .sheet(isPresented: $viewModel.showingDayEvents) {
-//            NavigationStack {
-//                coordinator.dayEventsView(for: viewModel.selectedDate)
-//            }
-//            .presentationDetents([.medium, .large])
-//        }
+        .toolbar{
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button {
+                    showPreferancesView.toggle()
+                } label: {
+                    Image(systemName: "gearshape")
+                }
+            }
+
+        }
+        .fullScreenCover(isPresented: $showPreferancesView) {
+            NavigationStack {
+                PreferencesView()
+            }
+        }
         .overlay {
             if viewModel.isLoading {
                 LoadingView()

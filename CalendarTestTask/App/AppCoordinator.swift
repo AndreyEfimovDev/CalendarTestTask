@@ -8,9 +8,35 @@
 import SwiftUI
 internal import Combine
 
+
+enum Theme: String, CaseIterable, Codable {
+    case light
+    case dark
+    case system
+
+    var displayName: String {
+        switch self {
+        case .light: return "Light"
+        case .dark: return "Dark"
+        case .system: return "System"
+        }
+    }
+    
+    var colorScheme: ColorScheme? {
+        switch self {
+        case .light: return .light
+        case .dark: return .dark
+        case .system: return nil
+        }
+    }
+}
+
+
 class AppCoordinator: ObservableObject {
     
     @Published var selectedDate: Date?
+    
+    @AppStorage("selectedTheme") var selectedTheme: Theme = .system
     
     let apiService: APIServiceProtocol
     
