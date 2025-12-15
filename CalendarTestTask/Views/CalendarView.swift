@@ -79,9 +79,8 @@ struct CalendarView: View {
             Text(viewModel.errorMessage ?? "Неизвестная ошибка")
         }
         .onAppear {
-            // ✅ Восстанавливаем состояние при возврате
+            // Восстанавливаем состояние при возврате
             viewModel.syncWithCoordinator()
-
         }
     }
 }

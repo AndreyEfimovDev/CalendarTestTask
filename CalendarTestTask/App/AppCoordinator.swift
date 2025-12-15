@@ -8,30 +8,6 @@
 import SwiftUI
 internal import Combine
 
-
-enum Theme: String, CaseIterable, Codable {
-    case light
-    case dark
-    case system
-
-    var displayName: String {
-        switch self {
-        case .light: return "Light"
-        case .dark: return "Dark"
-        case .system: return "System"
-        }
-    }
-    
-    var colorScheme: ColorScheme? {
-        switch self {
-        case .light: return .light
-        case .dark: return .dark
-        case .system: return nil
-        }
-    }
-}
-
-
 class AppCoordinator: ObservableObject {
     
     @Published var selectedDate: Date?
@@ -77,7 +53,7 @@ class AppCoordinator: ObservableObject {
         WorkoutDetailView(viewModel: WorkoutDetailViewModel(workoutId: workoutId, apiService: apiService))
     }
     
-    // Создаем корневое представление
+    // Корневое представление
     var rootView: some View {
         NavigationStack {
             CalendarContainerView()
@@ -95,28 +71,3 @@ class AppCoordinator: ObservableObject {
     
 }
 
-struct CalendarContainerView: View {
-    
-    @EnvironmentObject private var coordinator: AppCoordinator
-    
-    @State private var showLaunchView: Bool = true
-    
-    var body: some View {
-        
-        ZStack{
-            if showLaunchView {
-                LaunchView() {
-                    showLaunchView = false
-                }
-                .transition(.move(edge: .leading))
-            } else {
-                CalendarView(viewModel: CalendarViewModel(
-                    apiService: coordinator.apiService,
-                    initialDate: coordinator.initialCalendarDate,
-                    coordinator: coordinator
-                ))
-            }
-        }
-        .environmentObject(AppCoordinator())
-    }
-}

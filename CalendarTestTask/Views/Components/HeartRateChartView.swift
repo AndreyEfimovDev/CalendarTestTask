@@ -243,9 +243,6 @@ struct HeartRatePoint: Identifiable {
 
     return NavigationStack {
         WorkoutDetailView(viewModel: viewModel)
-//            .task {
-//                await viewModel.loadData()
-//            }
     }
 }
 

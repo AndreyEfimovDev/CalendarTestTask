@@ -41,7 +41,134 @@ struct WorkoutCard: View {
     }
 }
 
-
-#Preview {
-//    WorkoutCard(workout: <#Workout#>)
+#Preview("WorkoutCard - Все типы") {
+    VStack(spacing: 12) {
+        WorkoutCard(workout: Workout(
+            id: "1",
+            workoutActivityType: .walkingRunning,
+            workoutStartDate: Calendar.current.date(bySettingHour: 6, minute: 30, second: 0, of: Date())!
+        ))
+        
+        WorkoutCard(workout: Workout(
+            id: "2",
+            workoutActivityType: .yoga,
+            workoutStartDate: Calendar.current.date(bySettingHour: 8, minute: 0, second: 0, of: Date())!
+        ))
+        
+        WorkoutCard(workout: Workout(
+            id: "3",
+            workoutActivityType: .water,
+            workoutStartDate: Calendar.current.date(bySettingHour: 11, minute: 0, second: 0, of: Date())!
+        ))
+        
+        WorkoutCard(workout: Workout(
+            id: "4",
+            workoutActivityType: .cycling,
+            workoutStartDate: Calendar.current.date(bySettingHour: 15, minute: 30, second: 0, of: Date())!
+        ))
+        
+        WorkoutCard(workout: Workout(
+            id: "5",
+            workoutActivityType: .strength,
+            workoutStartDate: Calendar.current.date(bySettingHour: 18, minute: 45, second: 0, of: Date())!
+        ))
+    }
+    .padding()
+    .background(Color.gray.opacity(0.05))
 }
+
+#Preview("WorkoutCard - Разное время") {
+    VStack(spacing: 8) {
+        // Утро
+        WorkoutCard(workout: Workout(
+            id: "1",
+            workoutActivityType: .walkingRunning,
+            workoutStartDate: Calendar.current.date(bySettingHour: 6, minute: 0, second: 0, of: Date())!
+        ))
+        
+        // День
+        WorkoutCard(workout: Workout(
+            id: "2",
+            workoutActivityType: .water,
+            workoutStartDate: Calendar.current.date(bySettingHour: 12, minute: 30, second: 0, of: Date())!
+        ))
+        
+        // Вечер
+        WorkoutCard(workout: Workout(
+            id: "3",
+            workoutActivityType: .strength,
+            workoutStartDate: Calendar.current.date(bySettingHour: 19, minute: 0, second: 0, of: Date())!
+        ))
+        
+        // Поздний вечер
+        WorkoutCard(workout: Workout(
+            id: "4",
+            workoutActivityType: .yoga,
+            workoutStartDate: Calendar.current.date(bySettingHour: 21, minute: 15, second: 0, of: Date())!
+        ))
+    }
+    .padding()
+    .background(Color.gray.opacity(0.05))
+}
+
+#Preview("WorkoutCard - Темная тема") {
+    VStack(spacing: 12) {
+        WorkoutCard(workout: Workout(
+            id: "1",
+            workoutActivityType: .cycling,
+            workoutStartDate: Calendar.current.date(bySettingHour: 10, minute: 0, second: 0, of: Date())!
+        ))
+        
+        WorkoutCard(workout: Workout(
+            id: "2",
+            workoutActivityType: .strength,
+            workoutStartDate: Calendar.current.date(bySettingHour: 17, minute: 30, second: 0, of: Date())!
+        ))
+    }
+    .padding()
+    .background(Color.black)
+    .preferredColorScheme(.dark)
+}
+
+#Preview("WorkoutCard - В списке") {
+    List {
+        Section("Утро") {
+            WorkoutCard(workout: Workout(
+                id: "1",
+                workoutActivityType: .walkingRunning,
+                workoutStartDate: Calendar.current.date(bySettingHour: 7, minute: 30, second: 0, of: Date())!
+            ))
+            
+            WorkoutCard(workout: Workout(
+                id: "2",
+                workoutActivityType: .yoga,
+                workoutStartDate: Calendar.current.date(bySettingHour: 9, minute: 0, second: 0, of: Date())!
+            ))
+        }
+        
+        Section("День") {
+            WorkoutCard(workout: Workout(
+                id: "3",
+                workoutActivityType: .water,
+                workoutStartDate: Calendar.current.date(bySettingHour: 12, minute: 0, second: 0, of: Date())!
+            ))
+            
+            WorkoutCard(workout: Workout(
+                id: "4",
+                workoutActivityType: .cycling,
+                workoutStartDate: Calendar.current.date(bySettingHour: 15, minute: 45, second: 0, of: Date())!
+            ))
+        }
+        
+        Section("Вечер") {
+            WorkoutCard(workout: Workout(
+                id: "5",
+                workoutActivityType: .strength,
+                workoutStartDate: Calendar.current.date(bySettingHour: 18, minute: 30, second: 0, of: Date())!
+            ))
+        }
+    }
+    .listStyle(.insetGrouped)
+}
+
+

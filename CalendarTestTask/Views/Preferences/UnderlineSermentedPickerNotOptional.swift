@@ -64,13 +64,15 @@ fileprivate struct UnderlineSermentedPickerNotOptionalPreview: View {
         VStack(spacing: 20) {
             
             Text("Selected theme: \(theme.displayName)")
+                .font(.headline)
+                .foregroundStyle(Color.mycolor.myAccent)
             
             UnderlineSermentedPickerNotOptional(
                 selection: $theme,
                 allItems: Theme.allCases,
                 titleForCase: { $0.displayName },
-                selectedTextColor: Color.blue,
-                unselectedTextColor: Color.secondary
+                selectedTextColor: Color.mycolor.myBlue,
+                unselectedTextColor: Color.mycolor.myAccent.opacity(0.5)
             )
             .frame(height: 40)
             .padding()

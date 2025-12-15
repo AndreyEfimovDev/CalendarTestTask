@@ -12,20 +12,11 @@ import XCTest
 @MainActor
 class CalendarViewModelTests: XCTestCase {
     
-    
-    private func dateFromString(_ string: String) -> Date {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        formatter.locale = Locale(identifier: "en_US_POSIX")
-        formatter.timeZone = TimeZone(secondsFromGMT: 0)
-        return formatter.date(from: string)!
-    }
-    
     func testWorkoutsFilteringByDate() {
         // Given
         let viewModel = CalendarViewModel(apiService: MockAPIService())
         
-        // Создаем тестовые данные НАПРЯМУЮ
+        // Тестовые данные
         let testWorkouts = [
             Workout(
                 id: "1",
@@ -44,10 +35,9 @@ class CalendarViewModelTests: XCTestCase {
             )
         ]
         
-        // Устанавливаем данные НАПРЯМУЮ, без loadWorkouts()
+        // Устанавливаем тестовые данные, без loadWorkouts()
         viewModel.setTestWorkouts(testWorkouts)
         
-        // Когда: НИКАКОГО wait(), НИКАКОГО ожидания
         let testDate = dateFromString("2025-11-25 00:00:00")
         let workouts = viewModel.workoutsForDay(testDate)
         
@@ -69,8 +59,6 @@ class CalendarViewModelTests: XCTestCase {
         // Создаем ViewModel с пустым сервисом
         let viewModel = CalendarViewModel(apiService: MockAPIService())
         
-        // Устанавливаем данные НАПРЯМУЮ, без вызова loadWorkouts()
-        // Это ключевой момент!
         viewModel.setTestWorkouts([testWorkout])
         
         // When & Then
@@ -134,7 +122,6 @@ class CalendarViewModelTests: XCTestCase {
         let workout = Workout(id: "empty", workoutActivityType: .walkingRunning, workoutStartDate: Date())
         let viewModel = WorkoutDetailViewModel(workout: workout, apiService: service)
         
-        // Когда: загружаем данные
         viewModel.loadData()
         try await Task.sleep(nanoseconds: 500_000_000) // 0.5 секунды
         
@@ -145,7 +132,7 @@ class CalendarViewModelTests: XCTestCase {
     }
 
     func testWorkoutDetailErrorHandling() async throws {
-        // Given: сервис, который кидает ошибку
+        // Given: сервис, который выбрасывает ошибку
         class ErrorMockAPIService: APIServiceProtocol {
             func fetchWorkouts() async throws -> [Workout] { throw NSError(domain: "test", code: 1) }
             func fetchWorkouts(for date: Date) async throws -> [Workout] { throw NSError(domain: "test", code: 1) }
@@ -164,11 +151,15 @@ class CalendarViewModelTests: XCTestCase {
         // Then: проверяем, что ViewModel не падает
         XCTAssertNotNil(viewModel)
     }
-
+    
+    private func dateFromString(_ string: String) -> Date {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        formatter.timeZone = TimeZone(secondsFromGMT: 0)
+        return formatter.date(from: string)!
+    }
 }
-
-
-
 
 
 class MockAPIService: APIServiceProtocol {

@@ -189,7 +189,6 @@ class MockDataService: APIServiceProtocol {
                 }
             }
             
-            // Теперь пробуем декодировать через наш decoder
             print("\n🧪 Пробуем декодировать через JSONDecoder...")
             let response = try decoder.decode(MetadataResponse.self, from: data)
             print("✅ Успешно декодировано через JSONDecoder")

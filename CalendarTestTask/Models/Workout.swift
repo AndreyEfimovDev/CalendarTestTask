@@ -29,49 +29,11 @@ struct Workout: Identifiable, Codable, Hashable {
         return formatter.string(from: workoutStartDate)
     }
     
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(id)
-    }
-    
-    static func == (lhs: Workout, rhs: Workout) -> Bool {
-        lhs.id == rhs.id
-    }
-}
-
-enum WorkoutActivityType: String, Codable, CaseIterable {
-    case walkingRunning = "Walking/Running"
-    case yoga = "Yoga"
-    case water = "Water"
-    case cycling = "Cycling"
-    case strength = "Strength"
-    
-    var icon: String {
-        switch self {
-        case .walkingRunning: return "figure.walk"
-        case .yoga: return "figure.mind.and.body"
-        case .water: return "drop.fill"
-        case .cycling: return "bicycle"
-        case .strength: return "dumbbell.fill"
-        }
-    }
-    
-    var color: Color {
-        switch self {
-        case .walkingRunning: return Color.mycolor.myYellow
-        case .yoga: return Color.mycolor.myPurple
-        case .water: return Color.mycolor.myBlue
-        case .cycling: return Color.mycolor.myGreen
-        case .strength: return Color.mycolor.myOrange
-        }
-    }
-    
-    var localizedName: String {
-        switch self {
-        case .walkingRunning: return "Ходьба/Бег"
-        case .yoga: return "Йога"
-        case .water: return "Водные процедуры"
-        case .cycling: return "Велоспорт"
-        case .strength: return "Силовая"
-        }
-    }
+//    func hash(into hasher: inout Hasher) {
+//        hasher.combine(id)
+//    }
+//    
+//    static func == (lhs: Workout, rhs: Workout) -> Bool {
+//        lhs.id == rhs.id
+//    }
 }
