@@ -70,13 +70,12 @@ SwiftUI-приложение для отслеживания спортивны�
 ## 📁 Структура проекта
 
 CalendarTestTask/
-├── Models/ # Data models (Workout, DiagramData...)
-├── ViewModels/ # CalendarViewModel, WorkoutDetailViewModel...
-├── Views/ # SwiftUI views (CalendarContainerView...)
-├── Services/ # APIServiceProtocol, MockDataService
-├── Resources/ # JSON data, assets
-└── CalendarTestTaskTests/ # Unit tests
-
+├── 📦 Models/              # Сущности данных
+├── 🧠 ViewModels/          # Бизнес-логика
+├── 🎨 Views/               # SwiftUI представления  
+├── 🔧 Services/            # Сервисы и API
+├── 📁 Resources/           # Ресурсы (JSON, ассеты)
+└── ✅ Tests/               # Модульные тесты
 
 ## 📄 Лицензия
 
