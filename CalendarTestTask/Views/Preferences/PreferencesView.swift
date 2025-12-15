@@ -30,7 +30,7 @@ struct PreferencesView: View {
                 } label: {
                     Image(systemName: "chevron.left")
                         .font(.headline)
-                        .foregroundStyle(Color.accentColor)
+                        .foregroundStyle(Color.mycolor.myAccent)
                         .frame(width: 30, height: 30)
                         .background(.black.opacity(0.001))
                 }
@@ -42,7 +42,7 @@ struct PreferencesView: View {
     
     private func sectionHeader(_ text: String) -> some View {
         Text(text)
-            .foregroundStyle(Color.accentColor)
+            .foregroundStyle(Color.mycolor.myAccent)
     }
 
     private var themeAppearence: some View {

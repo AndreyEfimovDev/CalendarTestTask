@@ -84,7 +84,7 @@ class WorkoutDetailViewModel: ObservableObject {
         VStack(alignment: .leading, spacing: 12) {
             Text("Пульс")
                 .font(.headline)
-                .foregroundColor(.primary)
+                .foregroundColor(Color.mycolor.myAccent)
             
             HeartRateChartView(diagramData: diagramData)
             
@@ -93,11 +93,11 @@ class WorkoutDetailViewModel: ObservableObject {
                 VStack(alignment: .leading, spacing: 4) {
                     Text("Средний")
                         .font(.caption)
-                        .foregroundColor(.secondary)
+                        .foregroundColor(Color.mycolor.mySecondary)
                     Text("\(calculateAverageHeartRate(diagramData)) уд/мин")
                         .font(.title3)
                         .fontWeight(.semibold)
-                        .foregroundColor(.red)
+                        .foregroundColor(Color.mycolor.myRed)
                 }
                 
                 Divider()
@@ -106,11 +106,11 @@ class WorkoutDetailViewModel: ObservableObject {
                 VStack(alignment: .leading, spacing: 4) {
                     Text("Максимальный")
                         .font(.caption)
-                        .foregroundColor(.secondary)
+                        .foregroundColor(Color.mycolor.mySecondary)
                     Text("\(calculateMaxHeartRate(diagramData)) уд/мин")
                         .font(.title3)
                         .fontWeight(.semibold)
-                        .foregroundColor(.red)
+                        .foregroundColor(Color.mycolor.myRed)
                 }
                 
                 Divider()
@@ -119,11 +119,11 @@ class WorkoutDetailViewModel: ObservableObject {
                 VStack(alignment: .leading, spacing: 4) {
                     Text("Минимальный")
                         .font(.caption)
-                        .foregroundColor(.secondary)
+                        .foregroundColor(Color.mycolor.mySecondary)
                     Text("\(calculateMinHeartRate(diagramData)) уд/мин")
                         .font(.title3)
                         .fontWeight(.semibold)
-                        .foregroundColor(.red)
+                        .foregroundColor(Color.mycolor.myRed)
                 }
             }
             .padding(.top, 8)

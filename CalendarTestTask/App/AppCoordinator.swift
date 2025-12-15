@@ -98,12 +98,32 @@ class AppCoordinator: ObservableObject {
 struct CalendarContainerView: View {
     
     @EnvironmentObject private var coordinator: AppCoordinator
+    
+    @State private var showLaunchView: Bool = true
+    
+    var body: some View {
         
-        var body: some View {
-            CalendarView(viewModel: CalendarViewModel(
-                apiService: coordinator.apiService,
-                initialDate: coordinator.initialCalendarDate,
-                coordinator: coordinator // ✅ Передаем координатор
-            ))
+        ZStack{
+            if showLaunchView {
+                LaunchView() {
+                    showLaunchView = false
+                }
+                .transition(.move(edge: .leading))
+            } else {
+                CalendarView(viewModel: CalendarViewModel(
+                    apiService: coordinator.apiService,
+                    initialDate: coordinator.initialCalendarDate,
+                    coordinator: coordinator // ✅ Передаем координатор
+                ))
+            }
         }
+
+        
+//        
+//        CalendarView(viewModel: CalendarViewModel(
+//            apiService: coordinator.apiService,
+//            initialDate: coordinator.initialCalendarDate,
+//            coordinator: coordinator // ✅ Передаем координатор
+//        ))
+    }
 }

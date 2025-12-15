@@ -19,7 +19,7 @@ struct CalendarHeader: View {
             Button(action: onPrevious) {
                 Image(systemName: "chevron.left")
                     .font(.headline)
-                    .foregroundColor(.blue)
+                    .foregroundColor(Color.mycolor.myBlue)
                     .frame(width: 44, height: 44) // Фиксированный размер
             }
             
@@ -27,6 +27,7 @@ struct CalendarHeader: View {
             HStack(spacing: 16) {
                 Text(monthYear)
                     .font(.headline)
+                    .foregroundColor(Color.mycolor.myAccent)
                     .frame(maxWidth: .infinity)
                 
 //                Button(action: onToday) {
@@ -47,7 +48,7 @@ struct CalendarHeader: View {
             Button(action: onNext) {
                 Image(systemName: "chevron.right")
                     .font(.headline)
-                    .foregroundColor(.blue)
+                    .foregroundColor(Color.mycolor.myBlue)
                     .frame(width: 44, height: 44) // Фиксированный размер
             }
         }

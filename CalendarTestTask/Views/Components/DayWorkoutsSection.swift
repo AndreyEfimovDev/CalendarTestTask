@@ -26,6 +26,8 @@ struct DayWorkoutsSection: View {
             HStack {
                 Text(Calendar.current.isDateInToday(date) ? "Тренировки сегодня" : "Тренировки на \(dateFormatter.string(from: date))")
                     .font(.headline)
+                    .foregroundColor(Color.mycolor.myAccent)
+
                 Spacer()
             }
             .padding(.horizontal)
@@ -33,7 +35,7 @@ struct DayWorkoutsSection: View {
             // Список тренировок или заглушка
             if workouts.isEmpty {
                 Text(Calendar.current.isDateInToday(date) ? "Сегодня нет тренировок" : "На выбранный день нет тренировок")
-                    .foregroundColor(.secondary)
+                    .foregroundColor(Color.mycolor.myAccent)
                     .frame(maxWidth: .infinity, alignment: .center)
                     .padding()
             } else {
