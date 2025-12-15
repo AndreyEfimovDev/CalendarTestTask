@@ -9,9 +9,12 @@ import SwiftUI
 
 struct CalendarDayView: View {
     let date: Date
-    @ObservedObject var viewModel: CalendarViewModel
+    let hasWorkout: Bool
     let isCurrentMonth: Bool
     
+    @EnvironmentObject private var coordinator: AppCoordinator
+    @ObservedObject var viewModel: CalendarViewModel
+
     private var dayNumber: Int {
         Calendar.current.component(.day, from: date)
     }
@@ -21,8 +24,14 @@ struct CalendarDayView: View {
     }
     
     private var isSelected: Bool {
-        Calendar.current.isDate(date, inSameDayAs: viewModel.selectedDate)
+        if let selectedDate = viewModel.selectedDate {
+            return Calendar.current.isDate(date, inSameDayAs: selectedDate)
+        } else {
+            // Если нет выбранной даты, проверяем, является ли эта дата сегодняшней
+            return Calendar.current.isDate(date, inSameDayAs: coordinator.initialCalendarDate)
+        }
     }
+
     
     private var hasWorkouts: Bool {
         viewModel.hasWorkoutsOnDay(date)
@@ -78,9 +87,8 @@ struct CalendarDayView: View {
                 .foregroundColor(.secondary)
             
             CalendarDayView(
-                date: createDate(day: 21),
-                viewModel: createMockViewModel(hasWorkouts: true, workoutCount: 3),
-                isCurrentMonth: true
+                date: createDate(day: 21), hasWorkout: true,
+                isCurrentMonth: true, viewModel: createMockViewModel(hasWorkouts: true, workoutCount: 3)
             )
         }
         
@@ -90,9 +98,8 @@ struct CalendarDayView: View {
                 .foregroundColor(.secondary)
             
             CalendarDayView(
-                date: createDate(day: 22),
-                viewModel: createMockViewModel(hasWorkouts: true, workoutCount: 1),
-                isCurrentMonth: true
+                date: createDate(day: 22), hasWorkout: true,
+                isCurrentMonth: true, viewModel: createMockViewModel(hasWorkouts: true, workoutCount: 1)
             )
         }
         
@@ -102,9 +109,8 @@ struct CalendarDayView: View {
                 .foregroundColor(.secondary)
             
             CalendarDayView(
-                date: createDate(day: 23),
-                viewModel: createMockViewModel(hasWorkouts: false),
-                isCurrentMonth: true
+                date: createDate(day: 23), hasWorkout: false,
+                isCurrentMonth: true, viewModel: createMockViewModel(hasWorkouts: false)
             )
         }
         
@@ -114,9 +120,8 @@ struct CalendarDayView: View {
                 .foregroundColor(.secondary)
             
             CalendarDayView(
-                date: Date(),
-                viewModel: createMockViewModel(hasWorkouts: true, workoutCount: 2),
-                isCurrentMonth: true
+                date: Date(), hasWorkout: false,
+                isCurrentMonth: true, viewModel: createMockViewModel(hasWorkouts: true, workoutCount: 2)
             )
         }
     }

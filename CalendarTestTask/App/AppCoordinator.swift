@@ -8,16 +8,9 @@
 import SwiftUI
 internal import Combine
 
-//enum AppRoute: Hashable {
-//    case calendar
-//    case dayEvents(Date)
-//    case workoutDetail(Workout)
-//    case workoutDetailWithId(String)
-//}
-//
-
 class AppCoordinator: ObservableObject {
-    @Published var selectedDate = Date()
+    
+    @Published var selectedDate: Date?
     
     let apiService: APIServiceProtocol
     
@@ -65,15 +58,26 @@ class AppCoordinator: ObservableObject {
                 .environmentObject(self)
         }
     }
+    
+    func setSelectedDate(_ date: Date?) {
+        selectedDate = date
+    }
+    
+    var displayDate: Date {
+        return selectedDate ?? initialCalendarDate
+    }
+    
 }
 
 struct CalendarContainerView: View {
-    @EnvironmentObject private var coordinator: AppCoordinator
     
-    var body: some View {
-        CalendarView(viewModel: CalendarViewModel(
-            apiService: coordinator.apiService,
-            initialDate: coordinator.initialCalendarDate
-        ))
-    }
+    @EnvironmentObject private var coordinator: AppCoordinator
+        
+        var body: some View {
+            CalendarView(viewModel: CalendarViewModel(
+                apiService: coordinator.apiService,
+                initialDate: coordinator.initialCalendarDate,
+                coordinator: coordinator // ✅ Передаем координатор
+            ))
+        }
 }

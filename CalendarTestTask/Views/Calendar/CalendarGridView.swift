@@ -38,11 +38,12 @@ struct CalendarGridView: View {
                 ForEach(viewModel.datesInMonth(), id: \.self) { date in
                     CalendarDayView(
                         date: date,
-                        viewModel: viewModel,
-                        isCurrentMonth: viewModel.isCurrentMonth(date)
+                        hasWorkout: !viewModel.workoutsForDay(date).isEmpty,
+                        isCurrentMonth: viewModel.isCurrentMonth(date),
+                        viewModel: viewModel
                     )
                     .onTapGesture {
-                        viewModel.selectDay(date)
+                        viewModel.selectDate(date)
                     }
                 }
             }

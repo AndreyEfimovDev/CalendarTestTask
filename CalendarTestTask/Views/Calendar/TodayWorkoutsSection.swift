@@ -10,6 +10,20 @@ import SwiftUI
 struct TodayWorkoutsSection: View {
     @ObservedObject var viewModel: CalendarViewModel
     
+    init(viewModel: CalendarViewModel) {
+        _viewModel = ObservedObject(wrappedValue: viewModel)
+    }
+    
+    // Добавляем вычисляемое свойство
+    private var hasWorkoutsToday: Bool {
+        return !viewModel.workoutsForDay(Date()).isEmpty
+    }
+    
+    // Или создаем функцию-хелпер
+    private func hasWorkoutsOnDay(_ date: Date) -> Bool {
+        return !viewModel.workoutsForDay(date).isEmpty
+    }
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             HStack {
@@ -19,16 +33,16 @@ struct TodayWorkoutsSection: View {
                 
                 Spacer()
                 
-                if viewModel.hasWorkoutsOnDay(Date()) {
+                if hasWorkoutsToday { // Используем вычисляемое свойство
                     Button("Все") {
-                        viewModel.selectDay(Date())
+                        viewModel.selectDate(Date()) // Возможно нужно selectDate вместо selectDay
                     }
                     .font(.caption)
                     .foregroundColor(.blue)
                 }
             }
             
-            if viewModel.hasWorkoutsOnDay(Date()) {
+            if hasWorkoutsToday { // Используем вычисляемое свойство
                 let todaysWorkouts = viewModel.workoutsForDay(Date())
                 VStack(spacing: 8) {
                     ForEach(todaysWorkouts.prefix(3)) { workout in
