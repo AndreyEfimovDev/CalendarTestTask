@@ -79,8 +79,6 @@ struct DayEventsView: View {
     }
 }
 
-// Компонент карточки тренировки
-
 #Preview {
     let apiService = MockDataService()
     let coordinator = AppCoordinator(apiService: apiService)

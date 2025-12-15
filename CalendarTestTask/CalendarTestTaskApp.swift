@@ -10,7 +10,6 @@ import SwiftUI
 @main
 struct WorkoutCalendarApp: App {
     
-
 //    @StateObject private var coordinator = AppCoordinator(apiService: TestDataService())
     
     @StateObject private var coordinator = AppCoordinator(apiService: MockDataService())
@@ -20,9 +19,6 @@ struct WorkoutCalendarApp: App {
             coordinator.rootView
                 .environmentObject(coordinator)
                 .preferredColorScheme(coordinator.selectedTheme.colorScheme)
-                .onAppear {
-                    print("🚀 Приложение запущено")
-                }
         }
     }
 }

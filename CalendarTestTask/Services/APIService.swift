@@ -10,7 +10,7 @@ import Foundation
 
 protocol APIServiceProtocol {
     func fetchWorkouts() async throws -> [Workout]
-    func fetchWorkouts(for date: Date) async throws -> [Workout] // Этот метод пропущен!
+    func fetchWorkouts(for date: Date) async throws -> [Workout]
     func fetchMetadata(for workoutId: String) async throws -> WorkoutMetadata?
     func fetchDiagramData(for workoutId: String) async throws -> [DiagramData]?
 }

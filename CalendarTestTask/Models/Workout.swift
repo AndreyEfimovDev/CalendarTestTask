@@ -12,7 +12,6 @@ struct Workout: Identifiable, Codable, Hashable {
     let workoutActivityType: WorkoutActivityType
     let workoutStartDate: Date
     
-    // Computed properties
     var date: Date {
         Calendar.current.startOfDay(for: workoutStartDate)
     }
@@ -30,7 +29,6 @@ struct Workout: Identifiable, Codable, Hashable {
         return formatter.string(from: workoutStartDate)
     }
     
-    // Hashable conformance
     func hash(into hasher: inout Hasher) {
         hasher.combine(id)
     }

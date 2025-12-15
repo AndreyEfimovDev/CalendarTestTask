@@ -16,7 +16,6 @@ class MockDataService: APIServiceProtocol {
             let container = try decoder.singleValueContainer()
             let dateString = try container.decode(String.self)
             
-            // Пробуем несколько форматов дат
             let formatters = [
                 "yyyy-MM-dd HH:mm:ss",
                 "yyyy-MM-dd",

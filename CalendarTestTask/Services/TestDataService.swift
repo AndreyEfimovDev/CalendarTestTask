@@ -67,7 +67,7 @@ class TestDataService: APIServiceProtocol {
     func fetchMetadata(for workoutId: String) async throws -> WorkoutMetadata? {
         try await Task.sleep(nanoseconds: 400_000_000)
         
-        // Создаем тестовые метаданные
+        // Тестовые метаданные
         return WorkoutMetadata(
             workoutKey: workoutId,
             workoutActivityType: .walkingRunning,
@@ -90,7 +90,7 @@ class TestDataService: APIServiceProtocol {
     func fetchDiagramData(for workoutId: String) async throws -> [DiagramData]? {
         try await Task.sleep(nanoseconds: 400_000_000)
         
-        // Создаем тестовые данные для графика
+        // Тестовые данные для графика
         var testData: [DiagramData] = []
         for i in 0..<20 {
             testData.append(

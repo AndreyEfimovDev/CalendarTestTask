@@ -31,7 +31,6 @@ struct CalendarDayView: View {
             return Calendar.current.isDate(date, inSameDayAs: coordinator.initialCalendarDate)
         }
     }
-
     
     private var hasWorkouts: Bool {
         viewModel.hasWorkoutsOnDay(date)
@@ -76,8 +75,6 @@ struct CalendarDayView: View {
         }
     }
 }
-
-
 
 #Preview {
     VStack(spacing: 20) {
@@ -127,7 +124,7 @@ struct CalendarDayView: View {
     }
     .padding()
     .background(Color(.systemBackground))
-//    .previewLayout(.sizeThatFits)
+    .environmentObject(AppCoordinator())
 }
 
 // Вспомогательные функции
@@ -153,24 +150,22 @@ private class PreviewCalendarViewModel: CalendarViewModel {
     override func workoutTypesForDay(_ date: Date) -> [WorkoutActivityType] {
         guard previewHasWorkouts else { return [] }
         
-        // Используем реальные кейсы из вашего enum
         let allTypes: [WorkoutActivityType] = [
-            .walkingRunning, // синий
-            .cycling,        // зелёный
-            .strength,       // оранжевый
-            .yoga,           // фиолетовый
-            .water           // голубой
+            .walkingRunning,
+            .cycling,
+            .strength,
+            .yoga,
+            .water
         ]
         
         return Array(allTypes.prefix(previewWorkoutCount))
     }
     
     override func isToday(_ date: Date) -> Bool {
-        // Сравниваем только день (без времени)
         return Calendar.current.isDateInToday(date)
     }
     
-    // Переопределяем, чтобы всегда показывать как текущий месяц
+    // Всегда показывать как текущий месяц
     override func isCurrentMonth(_ date: Date) -> Bool {
         return true
     }
@@ -181,10 +176,7 @@ private func createMockViewModel(hasWorkouts: Bool, workoutCount: Int = 3) -> Ca
 }
 
 
-
-
 #Preview("CalendarDayView Preview") {
-    // Быстрый превью с реальными цветами из вашего enum
     let dates = [21, 22, 23, 24]
     
     return HStack(spacing: 15) {
@@ -213,4 +205,5 @@ private func createMockViewModel(hasWorkouts: Bool, workoutCount: Int = 3) -> Ca
     }
     .padding()
     .background(Color(.systemBackground))
+    .environmentObject(AppCoordinator())
 }

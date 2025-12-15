@@ -65,7 +65,7 @@ struct HeartRatePoint: Identifiable {
 
 // MARK: - Preview
 #Preview("График пульса - тестовые данные", traits: .sizeThatFitsLayout) {
-    // Создаем тестовые данные для графика
+
     var testData: [DiagramData] = []
     
     for i in 0..<20 {
@@ -93,7 +93,7 @@ struct HeartRatePoint: Identifiable {
 }
 
 #Preview("График пульса - реальные данные (бег)", traits: .sizeThatFitsLayout) {
-    // Реальные данные из diagram_data.json для тренировки бега
+
     let runningData = [
         DiagramData(
             timeNumeric: 0, heartRate: 72, speedKmh: 0.0,
@@ -183,7 +183,7 @@ struct HeartRatePoint: Identifiable {
 }
 
 #Preview("График пульса - йога", traits: .sizeThatFitsLayout) {
-    // Йога - более плавный график пульса
+
     var yogaData: [DiagramData] = []
     
     for i in 0..<10 {
@@ -211,7 +211,7 @@ struct HeartRatePoint: Identifiable {
 }
 
 #Preview("График в WorkoutDetailView") {
-    // Используем уже загруженные данные
+
     let apiService = MockDataService()
     let workout = Workout(
         id: "7823456789012345",
@@ -220,8 +220,6 @@ struct HeartRatePoint: Identifiable {
     )
     let viewModel = WorkoutDetailViewModel(workout: workout, apiService: apiService)
     
-    // Имитируем уже загруженные данные для Preview
-    // Создаем тестовые данные напрямую
     var testDiagramData: [DiagramData] = []
     for i in 0..<15 {
         testDiagramData.append(
@@ -242,15 +240,12 @@ struct HeartRatePoint: Identifiable {
         )
     }
     
-    // Устанавливаем данные напрямую (нужно сделать diagramData публичным или добавить метод)
-    // Для Preview создадим специальный инициализатор
-    
+
     return NavigationStack {
         WorkoutDetailView(viewModel: viewModel)
-            .task {
-                // Используем .task модификатор вместо onAppear + Task
-                await viewModel.loadData()
-            }
+//            .task {
+//                await viewModel.loadData()
+//            }
     }
 }
 

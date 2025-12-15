@@ -7,8 +7,6 @@
 
 import Foundation
 
-import Foundation
-
 struct WorkoutMetadata: Codable {
     let workoutKey: String
     let workoutActivityType: WorkoutActivityType
@@ -39,7 +37,6 @@ struct WorkoutMetadata: Codable {
         case heartRateGraph, activityGraph, map
     }
     
-    // Для удобства доступа (опционально)
     var formattedDistance: String {
         if distance >= 1000 {
             return String(format: "%.1f км", distance / 1000)

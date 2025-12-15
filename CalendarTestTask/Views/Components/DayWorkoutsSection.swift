@@ -22,7 +22,6 @@ struct DayWorkoutsSection: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
-            // Заголовок с датой
             HStack {
                 Text(Calendar.current.isDateInToday(date) ? "Тренировки сегодня" : "Тренировки на \(dateFormatter.string(from: date))")
                     .font(.headline)
@@ -32,7 +31,6 @@ struct DayWorkoutsSection: View {
             }
             .padding(.horizontal)
             
-            // Список тренировок или заглушка
             if workouts.isEmpty {
                 Text(Calendar.current.isDateInToday(date) ? "Сегодня нет тренировок" : "На выбранный день нет тренировок")
                     .foregroundColor(Color.mycolor.myAccent)
@@ -41,7 +39,6 @@ struct DayWorkoutsSection: View {
             } else {
                 ForEach(workouts) { workout in
                     NavigationLink {
-                        // ✅ ПРАВИЛЬНО: используем существующий метод
                         coordinator.workoutDetailView(for: workout.id)
                     } label: {
                         WorkoutCard(workout: workout)

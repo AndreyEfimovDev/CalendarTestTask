@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-// Хелпер для создания preview с окружением
 struct PreviewWrapper<Content: View>: View {
     let content: () -> Content
     
@@ -26,7 +25,6 @@ struct PreviewWrapper<Content: View>: View {
     }
 }
 
-// Пример использования в других Preview:
 #Preview("Calendar View") {
     PreviewWrapper {
         let apiService = MockDataService()

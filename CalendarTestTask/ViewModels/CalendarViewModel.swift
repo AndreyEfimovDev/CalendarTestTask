@@ -11,20 +11,19 @@ internal import Combine
 
 class CalendarViewModel: ObservableObject {
     @Published var currentDate: Date = Date()
-    @Published var selectedDate: Date? // Для хранения выбранной в календаре даты
+    @Published var selectedDate: Date?
     @Published var isLoading = false
     @Published var errorMessage: String?
     @Published var workouts: [Workout] = []
     
     private let apiService: APIServiceProtocol
-    private weak var coordinator: AppCoordinator? // Ссылка на координатор
+    private weak var coordinator: AppCoordinator?
     
-    // ✅ Обновленный инициализатор
     init(apiService: APIServiceProtocol, initialDate: Date? = nil, coordinator: AppCoordinator? = nil) {
         
         // Set a custom colour titles for NavigationStack and the magnifying class in the search bar
         let appearance = UINavigationBarAppearance()
-        appearance.configureWithTransparentBackground() // it also removes a dividing line
+        appearance.configureWithTransparentBackground()
         
         // Explicitly setting the background colour
         appearance.backgroundEffect = UIBlurEffect(style: .systemUltraThinMaterial)
@@ -52,9 +51,6 @@ class CalendarViewModel: ObservableObject {
         // For UITableView
         UITableView.appearance().backgroundColor = UIColor.clear
 
-        
-        
-        
         
         self.apiService = apiService
         self.coordinator = coordinator

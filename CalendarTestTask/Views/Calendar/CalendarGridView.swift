@@ -52,9 +52,8 @@ struct CalendarGridView: View {
 }
 
 #Preview {
-    // Создаем тестовую ViewModel для превью
     class PreviewCalendarViewModel: CalendarViewModel {
-        // Переопределяем даты, чтобы всегда показывать ноябрь 2025
+        // Всегда показывать ноябрь 2025
         override var currentDate: Date {
             get {
                 // Фиксируем ноябрь 2025 для превью
@@ -114,5 +113,5 @@ struct CalendarGridView: View {
     ))
     .padding()
     .background(Color(.systemBackground))
-    .previewLayout(.sizeThatFits)
+    .environmentObject(AppCoordinator())
 }

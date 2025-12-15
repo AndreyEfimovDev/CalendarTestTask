@@ -11,7 +11,7 @@ import SwiftUI
 class SimpleTestService: APIServiceProtocol {
     
     func fetchWorkouts() async throws -> [Workout] {
-        // Простые тестовые данные
+        // Тестовые данные
         return [
             Workout(
                 id: "test1",
@@ -32,7 +32,7 @@ class SimpleTestService: APIServiceProtocol {
     }
     
     func fetchMetadata(for workoutId: String) async throws -> WorkoutMetadata? {
-        // Простые тестовые метаданные
+        // Тестовые метаданные
         return WorkoutMetadata(
             workoutKey: workoutId,
             workoutActivityType: .walkingRunning,
@@ -53,7 +53,7 @@ class SimpleTestService: APIServiceProtocol {
     }
     
     func fetchDiagramData(for workoutId: String) async throws -> [DiagramData]? {
-        // Простые тестовые данные для графика
+        // Тестовые данные для графика
         var data: [DiagramData] = []
         for i in 0..<10 {
             data.append(DiagramData(
@@ -113,7 +113,7 @@ class SimpleTestService: APIServiceProtocol {
     }
 }
 
-// Добавим ещё один Preview для тестирования UI:
+
 #Preview("Simple Test") {
     let apiService = SimpleTestService()
     let coordinator = AppCoordinator(apiService: apiService)

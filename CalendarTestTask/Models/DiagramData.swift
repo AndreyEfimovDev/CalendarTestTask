@@ -39,15 +39,3 @@ struct DiagramData: Codable, Identifiable {
         case currentTimestamp
     }
 }
-
-// Структура для ответа API
-//struct DiagramDataResponse: Codable {
-//    let description: String
-//    let workouts: [String: WorkoutDiagramData]
-//}
-
-//struct WorkoutDiagramData: Codable {
-//    let description: String
-//    let data: [DiagramData]
-//    let states: [String]
-//}

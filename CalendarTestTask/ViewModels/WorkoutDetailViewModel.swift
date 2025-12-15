@@ -41,22 +41,18 @@ class WorkoutDetailViewModel: ObservableObject {
         Task {
             isLoading = true
             errorMessage = nil
-            
             print("🔄 Загрузка деталей тренировки \(workoutId)...")
             
             do {
-                // Если workout не загружен, загружаем его
                 if workout == nil {
                     let allWorkouts = try await apiService.fetchWorkouts()
                     workout = allWorkouts.first { $0.id == workoutId }
                     print("✅ Тренировка найдена: \(workout?.workoutActivityType.localizedName ?? "неизвестно")")
                 }
                 
-                // Загружаем метаданные
                 metadata = try await apiService.fetchMetadata(for: workoutId)
                 print("✅ Метаданные загружены: \(metadata != nil ? "да" : "нет")")
                 
-                // ЗАГРУЖАЕМ ДАННЫЕ ДЛЯ ГРАФИКА (важно!)
                 diagramData = try await apiService.fetchDiagramData(for: workoutId)
                 print("✅ Данные графика загружены: \(diagramData?.count ?? 0) точек")
                 
@@ -130,7 +126,6 @@ class WorkoutDetailViewModel: ObservableObject {
         }
     }
 
-    // Добавляем вспомогательные функции:
     private func calculateAverageHeartRate(_ data: [DiagramData]) -> Int {
         guard !data.isEmpty else { return 0 }
         let sum = data.reduce(0) { $0 + $1.heartRate }

@@ -113,17 +113,10 @@ struct CalendarContainerView: View {
                 CalendarView(viewModel: CalendarViewModel(
                     apiService: coordinator.apiService,
                     initialDate: coordinator.initialCalendarDate,
-                    coordinator: coordinator // ✅ Передаем координатор
+                    coordinator: coordinator
                 ))
             }
         }
-
-        
-//        
-//        CalendarView(viewModel: CalendarViewModel(
-//            apiService: coordinator.apiService,
-//            initialDate: coordinator.initialCalendarDate,
-//            coordinator: coordinator // ✅ Передаем координатор
-//        ))
+        .environmentObject(AppCoordinator())
     }
 }

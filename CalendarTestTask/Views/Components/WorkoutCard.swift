@@ -13,7 +13,6 @@ struct WorkoutCard: View {
     
     var body: some View {
         HStack(spacing: 12) {
-            // Иконка типа тренировки
             Image(systemName: workout.workoutActivityType.icon)
                 .font(.title2)
                 .foregroundColor(workout.workoutActivityType.color)
@@ -38,7 +37,7 @@ struct WorkoutCard: View {
                 .foregroundColor(Color.mycolor.mySecondary)
         }
         .padding(.vertical, 8)
-        .contentShape(Rectangle()) // Делаем всю область кликабельной
+        .contentShape(Rectangle())
     }
 }
 

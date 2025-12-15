@@ -20,28 +20,22 @@ struct WorkoutDetailView: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 24) {
                 if let workout = viewModel.workout {
-                    // Заголовок
                     headerSection(workout: workout)
                     
-                    // Основная информация
                     if let metadata = viewModel.metadata {
                         Divider()
                         
-                        // Дистанция и длительность
                         statsSection(metadata: metadata)
                         
-                        // Комментарий
                         if let comment = metadata.comment, !comment.isEmpty {
                             Divider()
                             commentSection(comment: comment)
                         }
                         
-                        // Погода
                         Divider()
                         weatherSection(metadata: metadata)
                     }
                     
-                    // График пульса (бонус - будет позже)
                     if let diagramData = viewModel.diagramData, !diagramData.isEmpty {
                         Divider()
                         heartRateSection(diagramData: diagramData)
@@ -56,13 +50,6 @@ struct WorkoutDetailView: View {
         }
         .navigationTitle("Детали тренировки")
         .navigationBarTitleDisplayMode(.inline)
-//        .toolbar {
-//            ToolbarItem(placement: .navigationBarTrailing) {
-//                Button("Готово") {
-//                    dismiss()
-//                }
-//            }
-//        }
         .alert("Ошибка", isPresented: .constant(viewModel.errorMessage != nil)) {
             Button("OK") { viewModel.errorMessage = nil }
         } message: {

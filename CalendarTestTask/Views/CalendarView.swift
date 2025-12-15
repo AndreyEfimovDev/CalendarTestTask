@@ -25,7 +25,6 @@ struct CalendarView: View {
                     ProgressView("Загрузка тренировок...")
                         .padding()
                 } else {
-                    // Заголовок календаря (месяц и год)
                     CalendarHeader(
                         monthYear: viewModel.currentMonthYear,
                         onPrevious: viewModel.goToPreviousMonth,
@@ -36,10 +35,8 @@ struct CalendarView: View {
                         }
                     )
                     
-                    // Календарь
                     CalendarGridView(viewModel: viewModel)
                     
-                    // ✅ Блок тренировок - берем дату из viewModel
                     DayWorkoutsSection(
                         date: viewModel.selectedDate ?? coordinator.initialCalendarDate,
                         workouts: viewModel.workoutsForDay(
@@ -60,7 +57,6 @@ struct CalendarView: View {
                     Image(systemName: "gearshape")
                 }
             }
-
         }
         .fullScreenCover(isPresented: $showPreferancesView) {
             NavigationStack {
