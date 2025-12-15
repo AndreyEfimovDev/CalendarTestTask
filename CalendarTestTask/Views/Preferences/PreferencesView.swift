@@ -21,8 +21,8 @@ struct PreferencesView: View {
             }
         }
         .navigationTitle("Preferences")
-        .navigationBarBackButtonHidden(true)
         .navigationBarTitleDisplayMode(.inline)
+        .navigationBarBackButtonHidden(true)
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
                 Button {

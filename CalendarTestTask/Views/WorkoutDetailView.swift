@@ -9,8 +9,8 @@ import SwiftUI
 
 struct WorkoutDetailView: View {
     
-    @StateObject private var viewModel: WorkoutDetailViewModel
     @Environment(\.dismiss) private var dismiss
+    @StateObject private var viewModel: WorkoutDetailViewModel
     
     init(viewModel: WorkoutDetailViewModel) {
         _viewModel = StateObject(wrappedValue: viewModel)
@@ -50,6 +50,20 @@ struct WorkoutDetailView: View {
         }
         .navigationTitle("Детали тренировки")
         .navigationBarTitleDisplayMode(.inline)
+        .navigationBarBackButtonHidden(true)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button {
+                    dismiss()
+                } label: {
+                    Image(systemName: "chevron.left")
+                        .font(.headline)
+                        .foregroundStyle(Color.mycolor.myAccent)
+                        .frame(width: 30, height: 30)
+                        .background(.black.opacity(0.001))
+                }
+            }
+        }
         .alert("Ошибка", isPresented: .constant(viewModel.errorMessage != nil)) {
             Button("OK") { viewModel.errorMessage = nil }
         } message: {
@@ -241,7 +255,7 @@ struct WorkoutDetailView: View {
         .padding()
     }
     
-    // Вспомогательная функция для расчета среднего пульса
+    // Расчет среднего пульса
     private func calculateAverageHeartRate(_ data: [DiagramData]) -> Int {
         guard !data.isEmpty else { return 0 }
         let sum = data.reduce(0) { $0 + $1.heartRate }
@@ -256,7 +270,7 @@ struct WorkoutDetailView: View {
         data.map { $0.heartRate }.min() ?? 0
     }
     
-    // Дополнительно: можно добавить функцию для расчета средней скорости
+    // Расчет средней скорости
     private func calculateAverageSpeed(_ data: [DiagramData]) -> Double {
         guard !data.isEmpty else { return 0 }
         let sum = data.reduce(0.0) { $0 + $1.speedKmh }
