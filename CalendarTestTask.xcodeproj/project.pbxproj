@@ -116,7 +116,7 @@
 		47A144B92EF03B3300D68926 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		47A144BC2EF0442F00D68926 /* LaunchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchView.swift; sourceTree = "<group>"; };
 		47A144BE2EF045C200D68926 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
-		47A144C02EF047AE00D68926 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		47A144C02EF047AE00D68926 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,7 +167,6 @@
 		4727790C2EEC012000601CED /* CalendarTestTask */ = {
 			isa = PBXGroup;
 			children = (
-				47A144C02EF047AE00D68926 /* Info.plist */,
 				4727790A2EEC012000601CED /* CalendarTestTaskApp.swift */,
 				472779652EEC1D5500601CED /* Utilities */,
 				4727795E2EEC1B7000601CED /* PreviewHelpers */,
@@ -177,10 +176,9 @@
 				472779182EEC012E00601CED /* Models */,
 				472779262EEC06C000601CED /* ViewModels */,
 				472779292EEC076300601CED /* Views */,
+				47A144C12EF08BBB00D68926 /* Resources */,
 				472779092EEC012000601CED /* Assets.xcassets */,
-				4727794E2EEC12B700601CED /* diagram_data.json */,
-				472779502EEC12B700601CED /* metadata.json */,
-				472779332EEC08E900601CED /* list_workouts.json */,
+				47A144C02EF047AE00D68926 /* Info.plist */,
 			);
 			path = CalendarTestTask;
 			sourceTree = "<group>";
@@ -320,6 +318,16 @@
 				47A144BE2EF045C200D68926 /* LaunchScreen.storyboard */,
 			);
 			path = Launch;
+			sourceTree = "<group>";
+		};
+		47A144C12EF08BBB00D68926 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				4727794E2EEC12B700601CED /* diagram_data.json */,
+				472779502EEC12B700601CED /* metadata.json */,
+				472779332EEC08E900601CED /* list_workouts.json */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
