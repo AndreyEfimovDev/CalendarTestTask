@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct CalendarView: View {
+    
     @StateObject private var viewModel: CalendarViewModel
     @EnvironmentObject private var coordinator: AppCoordinator
     
@@ -16,54 +17,58 @@ struct CalendarView: View {
     }
     
     var body: some View {
-            ScrollView {
-                VStack(spacing: 20) {
-                    // Заголовок
+        ScrollView {
+            VStack(spacing: 20) {
+                if viewModel.isLoading {
+                    ProgressView("Загрузка тренировок...")
+                        .padding()
+                } else {
+                    // Заголовок календаря (месяц и год)
                     CalendarHeader(
                         monthYear: viewModel.currentMonthYear,
                         onPrevious: viewModel.goToPreviousMonth,
                         onNext: viewModel.goToNextMonth,
                         onToday: {
-                            // Кнопка "Сегодня" возвращает к ноябрю 2025
                             viewModel.currentDate = coordinator.initialCalendarDate
                         }
                     )
                     
-                    // Сетка календаря
+                    // Календарь
                     CalendarGridView(viewModel: viewModel)
                     
-                    // Сегодняшние тренировки (только если показываем ноябрь 2025)
+                    // Сегодняшние тренировки
                     if Calendar.current.isDate(viewModel.currentDate, equalTo: coordinator.initialCalendarDate, toGranularity: .month) {
                         TodayWorkoutsSection(viewModel: viewModel)
                     }
                 }
-                .padding()
             }
-            .navigationTitle("Календарь тренировок")
-            .navigationBarTitleDisplayMode(.inline)
-            .sheet(isPresented: $viewModel.showingDayEvents) {
-                NavigationStack {
-                    coordinator.dayEventsView(for: viewModel.selectedDate)
-                }
-                .presentationDetents([.medium, .large])
+            .padding()
+        }
+        .navigationTitle("Календарь тренировок")
+        .navigationBarTitleDisplayMode(.inline)
+        .sheet(isPresented: $viewModel.showingDayEvents) {
+            NavigationStack {
+                coordinator.dayEventsView(for: viewModel.selectedDate)
             }
-            .overlay {
-                if viewModel.isLoading {
-                    LoadingView()
-                }
-            }
-            .alert("Ошибка", isPresented: .constant(viewModel.errorMessage != nil)) {
-                Button("OK") {
-                    viewModel.errorMessage = nil
-                }
-                Button("Повторить") {
-                    viewModel.loadWorkouts()
-                }
-            } message: {
-                Text(viewModel.errorMessage ?? "Неизвестная ошибка")
+            .presentationDetents([.medium, .large])
+        }
+        .overlay {
+            if viewModel.isLoading {
+                LoadingView()
             }
         }
+        .alert("Ошибка", isPresented: .constant(viewModel.errorMessage != nil)) {
+            Button("OK") {
+                viewModel.errorMessage = nil
+            }
+            Button("Повторить") {
+                viewModel.loadWorkouts()
+            }
+        } message: {
+            Text(viewModel.errorMessage ?? "Неизвестная ошибка")
+        }
     }
+}
 
 #Preview {
     let apiService = MockDataService()

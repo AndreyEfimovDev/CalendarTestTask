@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CalendarDayView: View {
     let date: Date
-    let viewModel: CalendarViewModel
+    @ObservedObject var viewModel: CalendarViewModel
     let isCurrentMonth: Bool
     
     private var dayNumber: Int {
@@ -28,34 +28,21 @@ struct CalendarDayView: View {
         viewModel.hasWorkoutsOnDay(date)
     }
     
-    private var workoutTypes: [WorkoutActivityType] {
-        viewModel.workoutTypesForDay(date)
-    }
-    
     var body: some View {
         VStack(spacing: 4) {
-            // Число
             Text("\(dayNumber)")
                 .font(.system(size: 16, weight: .medium))
                 .foregroundColor(textColor)
-                .frame(width: 36, height: 36)
-                .background(background)
+                .frame(width: 32, height: 32)
+                .background(circleBackground)
                 .clipShape(Circle())
-            
-            // Индикаторы тренировок
-            if hasWorkouts {
-                HStack(spacing: 2) {
-                    ForEach(workoutTypes.prefix(3), id: \.self) { type in
-                        Circle()
-                            .fill(type.color)
-                            .frame(width: 4, height: 4)
-                    }
-                }
-                .frame(height: 4)
-            }
         }
-        .frame(height: 56)
+        .frame(height: 30)
         .opacity(isCurrentMonth ? 1.0 : 0.4)
+        .background(
+            hasWorkouts ? Color.green.opacity(0.15) : Color.clear
+        )
+        .cornerRadius(8)
     }
     
     private var textColor: Color {
@@ -68,17 +55,157 @@ struct CalendarDayView: View {
         }
     }
     
-    private var background: Color {
+    private var circleBackground: Color {
         if isSelected {
             return .blue
         } else if isToday {
             return Color.blue.opacity(0.1)
+        } else if hasWorkouts {
+            return Color.green.opacity(0.3)
         } else {
             return .clear
         }
     }
 }
 
+
+
 #Preview {
-//    CalendarDayView()
+    VStack(spacing: 20) {
+        Group {
+            Text("День с 3 тренировками")
+                .font(.headline)
+                .foregroundColor(.secondary)
+            
+            CalendarDayView(
+                date: createDate(day: 21),
+                viewModel: createMockViewModel(hasWorkouts: true, workoutCount: 3),
+                isCurrentMonth: true
+            )
+        }
+        
+        Group {
+            Text("День с 1 тренировкой")
+                .font(.headline)
+                .foregroundColor(.secondary)
+            
+            CalendarDayView(
+                date: createDate(day: 22),
+                viewModel: createMockViewModel(hasWorkouts: true, workoutCount: 1),
+                isCurrentMonth: true
+            )
+        }
+        
+        Group {
+            Text("День без тренировок")
+                .font(.headline)
+                .foregroundColor(.secondary)
+            
+            CalendarDayView(
+                date: createDate(day: 23),
+                viewModel: createMockViewModel(hasWorkouts: false),
+                isCurrentMonth: true
+            )
+        }
+        
+        Group {
+            Text("Сегодня с 2 тренировками")
+                .font(.headline)
+                .foregroundColor(.secondary)
+            
+            CalendarDayView(
+                date: Date(),
+                viewModel: createMockViewModel(hasWorkouts: true, workoutCount: 2),
+                isCurrentMonth: true
+            )
+        }
+    }
+    .padding()
+    .background(Color(.systemBackground))
+//    .previewLayout(.sizeThatFits)
+}
+
+// Вспомогательные функции
+private func createDate(day: Int) -> Date {
+    Calendar.current.date(from: DateComponents(year: 2025, month: 11, day: day))!
+}
+
+// Класс для мок-данных в превью
+private class PreviewCalendarViewModel: CalendarViewModel {
+    private let previewHasWorkouts: Bool
+    private let previewWorkoutCount: Int
+    
+    init(hasWorkouts: Bool, workoutCount: Int = 3) {
+        self.previewHasWorkouts = hasWorkouts
+        self.previewWorkoutCount = workoutCount
+        super.init(apiService: MockDataService(), initialDate: Date())
+    }
+    
+    override func hasWorkoutsOnDay(_ date: Date) -> Bool {
+        return previewHasWorkouts
+    }
+    
+    override func workoutTypesForDay(_ date: Date) -> [WorkoutActivityType] {
+        guard previewHasWorkouts else { return [] }
+        
+        // Используем реальные кейсы из вашего enum
+        let allTypes: [WorkoutActivityType] = [
+            .walkingRunning, // синий
+            .cycling,        // зелёный
+            .strength,       // оранжевый
+            .yoga,           // фиолетовый
+            .water           // голубой
+        ]
+        
+        return Array(allTypes.prefix(previewWorkoutCount))
+    }
+    
+    override func isToday(_ date: Date) -> Bool {
+        // Сравниваем только день (без времени)
+        return Calendar.current.isDateInToday(date)
+    }
+    
+    // Переопределяем, чтобы всегда показывать как текущий месяц
+    override func isCurrentMonth(_ date: Date) -> Bool {
+        return true
+    }
+}
+
+private func createMockViewModel(hasWorkouts: Bool, workoutCount: Int = 3) -> CalendarViewModel {
+    PreviewCalendarViewModel(hasWorkouts: hasWorkouts, workoutCount: workoutCount)
+}
+
+
+
+
+#Preview("CalendarDayView Preview") {
+    // Быстрый превью с реальными цветами из вашего enum
+    let dates = [21, 22, 23, 24]
+    
+    return HStack(spacing: 15) {
+        ForEach(dates, id: \.self) { day in
+            VStack(spacing: 4) {
+                Text("\(day)")
+                    .font(.system(size: 16, weight: .medium))
+                    .foregroundColor(.primary)
+                    .frame(width: 32, height: 32)
+                    .background(day == 21 ? Color.blue.opacity(0.1) : Color.clear)
+                    .clipShape(Circle())
+                
+                if day == 21 || day == 24 { // Дни с тренировками
+                    HStack(spacing: 3) {
+                        // Точки с цветами из WorkoutActivityType
+                        Circle().fill(Color.blue).frame(width: 6, height: 6)    // walkingRunning
+                        Circle().fill(Color.green).frame(width: 6, height: 6)   // cycling
+                        Circle().fill(Color.orange).frame(width: 6, height: 6)  // strength
+                    }
+                    .padding(.top, 2)
+                }
+            }
+            .frame(height: 56)
+            .opacity(day == 23 ? 0.4 : 1.0) // 23 число - не из текущего месяца
+        }
+    }
+    .padding()
+    .background(Color(.systemBackground))
 }

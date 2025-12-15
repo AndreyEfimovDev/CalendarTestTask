@@ -11,6 +11,7 @@ struct CalendarGridView: View {
     @ObservedObject var viewModel: CalendarViewModel
     
     private let columns = Array(repeating: GridItem(.flexible()), count: 7)
+    
     private let weekdays = ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"]
     
     var body: some View {
@@ -30,7 +31,7 @@ struct CalendarGridView: View {
                 // Пустые ячейки для смещения
                 ForEach(0..<viewModel.weekdayOffset(), id: \.self) { _ in
                     Color.clear
-                        .frame(height: 44)
+                        .frame(height: 32)
                 }
                 
                 // Даты месяца
@@ -50,5 +51,67 @@ struct CalendarGridView: View {
 }
 
 #Preview {
-//    CalendarGridView()
+    // Создаем тестовую ViewModel для превью
+    class PreviewCalendarViewModel: CalendarViewModel {
+        // Переопределяем даты, чтобы всегда показывать ноябрь 2025
+        override var currentDate: Date {
+            get {
+                // Фиксируем ноябрь 2025 для превью
+                Calendar.current.date(from: DateComponents(year: 2025, month: 11, day: 1))!
+            }
+            set {
+                // Игнорируем установку новой даты в превью
+            }
+        }
+        
+        // Переопределяем чтобы всегда было 5 пустых ячеек (для ноября 2025, который начинается с пятницы)
+        override func weekdayOffset() -> Int {
+            return 5 // Ноябрь 2025 начинается с пятницы
+        }
+        
+        // Переопределяем hasWorkouts для дней 21-25
+        override func hasWorkoutsOnDay(_ date: Date) -> Bool {
+            let day = Calendar.current.component(.day, from: date)
+            return (21...25).contains(day)
+        }
+        
+        // Переопределяем типы тренировок
+        override func workoutTypesForDay(_ date: Date) -> [WorkoutActivityType] {
+            let day = Calendar.current.component(.day, from: date)
+            
+            switch day {
+            case 21:
+                return [.walkingRunning, .cycling, .strength]
+            case 22:
+                return [.yoga, .water]
+            case 23:
+                return [.cycling]
+            case 24:
+                return [.strength, .walkingRunning]
+            case 25:
+                return [.water, .yoga, .cycling]
+            default:
+                return []
+            }
+        }
+        
+        // Всегда текущий месяц
+        override func isCurrentMonth(_ date: Date) -> Bool {
+            return true
+        }
+        
+        // Дата сегодня - 15 ноября для теста
+        override func isToday(_ date: Date) -> Bool {
+            let day = Calendar.current.component(.day, from: date)
+            return day == 15
+        }
+    }
+    
+    return CalendarGridView(viewModel: PreviewCalendarViewModel(
+        apiService: MockDataService(),
+        initialDate: Calendar.current.date(from: DateComponents(year: 2025, month: 11, day: 1))!
+    ))
+    .padding()
+    .background(Color(.systemBackground))
+    .previewLayout(.sizeThatFits)
 }

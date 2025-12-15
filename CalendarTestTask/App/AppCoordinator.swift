@@ -23,11 +23,17 @@ class AppCoordinator: ObservableObject {
     
     // Начальная дата для календаря (ноябрь 2025)
     var initialCalendarDate: Date {
-        let calendar = Calendar.current
-        var components = calendar.dateComponents([.year, .month], from: Date())
-        components.year = 2025
-        components.month = 11 // Ноябрь
-        return calendar.date(from: components) ?? Date()
+        
+//        // Устанавливает текущую дату в ноябрь 2025
+//        let calendar = Calendar.current
+//        var components = calendar.dateComponents([.year, .month], from: Date())
+//        components.year = 2025
+//        components.month = 11 // Ноябрь
+//        return calendar.date(from: components) ?? Date()
+        
+        // Текущая дата
+        return Date()
+
     }
     
     init(apiService: APIServiceProtocol = MockDataService()) {

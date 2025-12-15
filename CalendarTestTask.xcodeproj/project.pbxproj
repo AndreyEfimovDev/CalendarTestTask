@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		4727790D2EEC012000601CED /* CalendarTestTaskApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4727790A2EEC012000601CED /* CalendarTestTaskApp.swift */; };
-		4727790E2EEC012000601CED /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4727790B2EEC012000601CED /* ContentView.swift */; };
 		4727790F2EEC012000601CED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 472779092EEC012000601CED /* Assets.xcassets */; };
 		472779122EEC012600601CED /* CalendarTestTaskTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472779102EEC012600601CED /* CalendarTestTaskTests.swift */; };
 		472779162EEC012900601CED /* CalendarTestTaskUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472779132EEC012900601CED /* CalendarTestTaskUITests.swift */; };
@@ -73,7 +72,6 @@
 		472778F62EEC003E00601CED /* CalendarTestTaskUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CalendarTestTaskUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		472779092EEC012000601CED /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4727790A2EEC012000601CED /* CalendarTestTaskApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTestTaskApp.swift; sourceTree = "<group>"; };
-		4727790B2EEC012000601CED /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		472779102EEC012600601CED /* CalendarTestTaskTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTestTaskTests.swift; sourceTree = "<group>"; };
 		472779132EEC012900601CED /* CalendarTestTaskUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTestTaskUITests.swift; sourceTree = "<group>"; };
 		472779142EEC012900601CED /* CalendarTestTaskUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTestTaskUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -159,7 +157,6 @@
 				4727790A2EEC012000601CED /* CalendarTestTaskApp.swift */,
 				472779652EEC1D5500601CED /* Utilities */,
 				4727795E2EEC1B7000601CED /* PreviewHelpers */,
-				4727790B2EEC012000601CED /* ContentView.swift */,
 				472779492EEC0E9D00601CED /* App */,
 				472779372EEC090B00601CED /* Extensions */,
 				4727791F2EEC01D900601CED /* Services */,
@@ -448,7 +445,6 @@
 				4727791C2EEC019400601CED /* WorkoutMetadata.swift in Sources */,
 				4727793F2EEC09AB00601CED /* LoadingView.swift in Sources */,
 				4727790D2EEC012000601CED /* CalendarTestTaskApp.swift in Sources */,
-				4727790E2EEC012000601CED /* ContentView.swift in Sources */,
 				4727791E2EEC01BE00601CED /* DiagramData.swift in Sources */,
 				4727793B2EEC093600601CED /* DateFormatter.swift in Sources */,
 				472779252EEC06A300601CED /* MockDataService.swift in Sources */,

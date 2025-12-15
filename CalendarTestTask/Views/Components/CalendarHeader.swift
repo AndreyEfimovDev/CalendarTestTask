@@ -29,16 +29,17 @@ struct CalendarHeader: View {
                     .font(.headline)
                     .frame(maxWidth: .infinity)
                 
-                Button(action: onToday) {
-                    Text("Сегодня")
-                        .font(.subheadline)
-                        .foregroundColor(.blue)
-                        .padding(.horizontal, 12)
-                        .padding(.vertical, 6)
-                        .background(Color.blue.opacity(0.1))
-                        .cornerRadius(8)
-                }
-                .fixedSize() // Не дает кнопке сжиматься
+//                Button(action: onToday) {
+//                    Text("Ноябрь")
+//                        .font(.subheadline)
+//                        .foregroundColor(.blue)
+//                        .padding(.horizontal, 12)
+//                        .padding(.vertical, 6)
+//                        .background(Color.blue.opacity(0.1))
+//                        .cornerRadius(8)
+//                }
+//                .fixedSize() // Не дает кнопке сжиматься
+                
             }
             .padding(.horizontal, 8)
             

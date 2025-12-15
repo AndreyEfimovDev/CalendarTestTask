@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct DayEventsView: View {
+    
     @StateObject private var viewModel: DayEventsViewModel
     @EnvironmentObject private var coordinator: AppCoordinator
     @Environment(\.dismiss) private var dismiss

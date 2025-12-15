@@ -40,11 +40,13 @@ class CalendarViewModel: ObservableObject {
             
             do {
                 workouts = try await apiService.fetchWorkouts()
-                print("✅ Загружено тренировок: \(workouts.count)")
-                print("📅 Даты тренировок:")
-                for workout in workouts {
-                    print("  - \(workout.workoutStartDate): \(workout.workoutActivityType.rawValue)")
+                print("✅ Данные загружены: \(workouts.count) тренировок")
+                
+                // Перерисовка
+                DispatchQueue.main.async {
+                    self.objectWillChange.send()
                 }
+
             } catch let apiError as APIError {
                 errorMessage = apiError.description
                 print("❌ API Error: \(apiError.description)")
@@ -68,15 +70,83 @@ class CalendarViewModel: ObservableObject {
         return formatter.string(from: currentDate).capitalized
     }
     
+    func isNovember2025() -> Bool {
+        let year = Calendar.current.component(.year, from: currentDate)
+        let month = Calendar.current.component(.month, from: currentDate)
+        return year == 2025 && month == 11
+    }
+
+    
+//    func workoutsForDay(_ date: Date) -> [Workout] {
+//        workouts.filter { workout in
+//            Calendar.current.isDate(workout.date, inSameDayAs: date)
+//        }
+//    }
+    
+//    func workoutsForDay(_ date: Date) -> [Workout] {
+//        let filteredWorkouts = workouts.filter { workout in
+//            Calendar.current.isDate(workout.date, inSameDayAs: date)
+//        }
+//        
+//        // ОТЛАДКА для дней 21-25 ноября
+//        let day = Calendar.current.component(.day, from: date)
+//        let month = Calendar.current.component(.month, from: date)
+//        if month == 11 && (21...25).contains(day) {
+//            print("🔍 workoutsForDay(\(day).11.2025): \(filteredWorkouts.count) тренировок")
+//            for workout in filteredWorkouts {
+//                print("   - \(workout.workoutActivityType.rawValue) в \(workout.timeString)")
+//            }
+//        }
+//        
+//        return filteredWorkouts
+//    }
+    
     func workoutsForDay(_ date: Date) -> [Workout] {
-        workouts.filter { workout in
+        // ОТЛАДКА
+        let day = Calendar.current.component(.day, from: date)
+        let month = Calendar.current.component(.month, from: date)
+        let year = Calendar.current.component(.year, from: date)
+        
+        let filteredWorkouts = workouts.filter { workout in
             Calendar.current.isDate(workout.date, inSameDayAs: date)
         }
+        
+        // Отладка для всех дней 21-25
+        if (21...25).contains(day) {
+            print("📅 \(day).\(month).\(year): \(filteredWorkouts.count) тренировок")
+            if filteredWorkouts.count > 0 {
+                print("   Типы: \(filteredWorkouts.map { $0.workoutActivityType.rawValue })")
+            }
+        }
+        
+        return filteredWorkouts
     }
+
     
     func hasWorkoutsOnDay(_ date: Date) -> Bool {
-        !workoutsForDay(date).isEmpty
+        let workoutsForDay = workoutsForDay(date)
+        let result = !workoutsForDay.isEmpty
+        
+        // КРИТИЧЕСКАЯ ОТЛАДКА
+        let day = Calendar.current.component(.day, from: date)
+        let month = Calendar.current.component(.month, from: date)
+        let year = Calendar.current.component(.year, from: date)
+        
+        if month == 11 && year == 2025 && (21...25).contains(day) {
+            print("🔍 [REAL] hasWorkoutsOnDay(\(day).\(month).\(year)) = \(result)")
+            print("   workouts.count = \(workouts.count)")
+            print("   workoutsForDay.count = \(workoutsForDay.count)")
+            
+            if workoutsForDay.count > 0 {
+                for workout in workoutsForDay {
+                    print("   - \(workout.workoutActivityType.rawValue) в \(workout.timeString)")
+                }
+            }
+        }
+        
+        return result
     }
+
     
     func workoutTypesForDay(_ date: Date) -> [WorkoutActivityType] {
         Array(Set(workoutsForDay(date).map { $0.workoutActivityType }))
