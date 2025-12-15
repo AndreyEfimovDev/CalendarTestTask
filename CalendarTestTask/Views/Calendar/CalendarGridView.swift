@@ -21,7 +21,7 @@ struct CalendarGridView: View {
                 ForEach(weekdays, id: \.self) { weekday in
                     Text(weekday)
                         .font(.caption)
-                        .foregroundColor(.secondary)
+                        .foregroundColor(Color.mycolor.mySecondary)
                         .frame(height: 24)
                 }
             }

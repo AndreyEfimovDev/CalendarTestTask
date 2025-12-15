@@ -49,28 +49,28 @@ struct CalendarDayView: View {
         .frame(height: 30)
         .opacity(isCurrentMonth ? 1.0 : 0.4)
         .background(
-            hasWorkouts ? Color.green.opacity(0.15) : Color.clear
+            hasWorkouts ? Color.mycolor.myGreen.opacity(0.15) : Color.clear
         )
         .cornerRadius(8)
     }
     
     private var textColor: Color {
         if isSelected {
-            return .white
+            return Color.mycolor.myButtonTextPrimary
         } else if isToday {
-            return .blue
+            return Color.mycolor.myBlue
         } else {
-            return isCurrentMonth ? .primary : .secondary
+            return isCurrentMonth ? Color.mycolor.myAccent : Color.mycolor.mySecondary
         }
     }
     
     private var circleBackground: Color {
         if isSelected {
-            return .blue
+            return Color.mycolor.myBlue
         } else if isToday {
-            return Color.blue.opacity(0.1)
+            return Color.mycolor.myBlue.opacity(0.1)
         } else if hasWorkouts {
-            return Color.green.opacity(0.3)
+            return Color.mycolor.myGreen.opacity(0.3)
         } else {
             return .clear
         }
@@ -95,7 +95,7 @@ struct CalendarDayView: View {
         Group {
             Text("День с 1 тренировкой")
                 .font(.headline)
-                .foregroundColor(.secondary)
+                .foregroundColor(Color.mycolor.mySecondary)
             
             CalendarDayView(
                 date: createDate(day: 22), hasWorkout: true,
@@ -106,7 +106,7 @@ struct CalendarDayView: View {
         Group {
             Text("День без тренировок")
                 .font(.headline)
-                .foregroundColor(.secondary)
+                .foregroundColor(Color.mycolor.mySecondary)
             
             CalendarDayView(
                 date: createDate(day: 23), hasWorkout: false,
@@ -117,7 +117,7 @@ struct CalendarDayView: View {
         Group {
             Text("Сегодня с 2 тренировками")
                 .font(.headline)
-                .foregroundColor(.secondary)
+                .foregroundColor(Color.mycolor.mySecondary)
             
             CalendarDayView(
                 date: Date(), hasWorkout: false,

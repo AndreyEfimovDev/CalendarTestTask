@@ -84,11 +84,11 @@ struct WorkoutDetailView: View {
             VStack(alignment: .leading, spacing: 4) {
                 Text(workout.workoutActivityType.localizedName)
                     .font(.title2.bold())
-                    .foregroundColor(.primary)
+                    .foregroundColor(Color.mycolor.myAccent)
                 
                 Text(viewModel.formattedDate)
                     .font(.body)
-                    .foregroundColor(.secondary)
+                    .foregroundColor(Color.mycolor.mySecondary)
             }
             
             Spacer()
@@ -99,7 +99,7 @@ struct WorkoutDetailView: View {
         VStack(alignment: .leading, spacing: 16) {
             Text("Основные показатели")
                 .font(.headline)
-                .foregroundColor(.primary)
+                .foregroundColor(Color.mycolor.myAccent)
             
             HStack(spacing: 20) {
                 // Дистанция
@@ -109,7 +109,7 @@ struct WorkoutDetailView: View {
                         .foregroundColor(.secondary)
                     Text(metadata.formattedDistance)
                         .font(.title3.bold())
-                        .foregroundColor(.blue)
+                        .foregroundColor(Color.mycolor.myBlue)
                 }
                 
                 Spacer()
@@ -118,10 +118,10 @@ struct WorkoutDetailView: View {
                 VStack(alignment: .leading, spacing: 4) {
                     Text("Длительность")
                         .font(.caption)
-                        .foregroundColor(.secondary)
+                        .foregroundColor(Color.mycolor.mySecondary)
                     Text(metadata.formattedDuration)
                         .font(.title3.bold())
-                        .foregroundColor(.green)
+                        .foregroundColor(Color.mycolor.myGreen)
                 }
                 
                 Spacer()
@@ -130,10 +130,10 @@ struct WorkoutDetailView: View {
                 VStack(alignment: .leading, spacing: 4) {
                     Text("Слои")
                         .font(.caption)
-                        .foregroundColor(.secondary)
+                        .foregroundColor(Color.mycolor.mySecondary)
                     Text("\(metadata.maxLayer + 1)")
                         .font(.title3.bold())
-                        .foregroundColor(.orange)
+                        .foregroundColor(Color.mycolor.myOrange)
                 }
             }
         }
@@ -143,14 +143,14 @@ struct WorkoutDetailView: View {
         VStack(alignment: .leading, spacing: 8) {
             Text("Комментарий")
                 .font(.headline)
-                .foregroundColor(.primary)
+                .foregroundColor(Color.mycolor.myAccent)
             
             Text(comment)
                 .font(.body)
-                .foregroundColor(.secondary)
+                .foregroundColor(Color.mycolor.mySecondary)
                 .padding()
                 .frame(maxWidth: .infinity, alignment: .leading)
-                .background(Color.gray.opacity(0.1))
+                .background(Color.mycolor.mySecondary.opacity(0.1))
                 .clipShape(RoundedRectangle(cornerRadius: 8))
         }
     }
@@ -159,16 +159,16 @@ struct WorkoutDetailView: View {
         VStack(alignment: .leading, spacing: 12) {
             Text("Погодные условия")
                 .font(.headline)
-                .foregroundColor(.primary)
+                .foregroundColor(Color.mycolor.myAccent)
             
             HStack(spacing: 30) {
                 VStack(alignment: .leading, spacing: 4) {
                     Label("Температура", systemImage: "thermometer")
                         .font(.caption)
-                        .foregroundColor(.secondary)
+                        .foregroundColor(Color.mycolor.mySecondary)
                     Text(metadata.formattedTemperature)
                         .font(.title3)
-                        .foregroundColor(.primary)
+                        .foregroundColor(Color.mycolor.myAccent)
                 }
                 
                 Spacer()
@@ -176,10 +176,10 @@ struct WorkoutDetailView: View {
                 VStack(alignment: .leading, spacing: 4) {
                     Label("Влажность", systemImage: "humidity")
                         .font(.caption)
-                        .foregroundColor(.secondary)
+                        .foregroundColor(Color.mycolor.mySecondary)
                     Text(metadata.formattedHumidity)
                         .font(.title3)
-                        .foregroundColor(.primary)
+                        .foregroundColor(Color.mycolor.myAccent)
                 }
             }
         }
@@ -189,7 +189,7 @@ struct WorkoutDetailView: View {
         VStack(alignment: .leading, spacing: 16) {
             Text("Пульс во время тренировки")
                 .font(.headline)
-                .foregroundColor(.primary)
+                .foregroundColor(Color.mycolor.myAccent)
             
             HeartRateChartView(diagramData: diagramData)
             
@@ -200,14 +200,14 @@ struct WorkoutDetailView: View {
                     
                     Text("Статистика пульса")
                         .font(.subheadline)
-                        .foregroundColor(.secondary)
+                        .foregroundColor(Color.mycolor.myAccent)
                     
                     HStack(spacing: 20) {
                         StatItem(
                             title: "Средний",
                             value: "\(calculateAverageHeartRate(diagramData))",
                             unit: "уд/мин",
-                            color: .blue
+                            color: Color.mycolor.myBlue
                         )
                         
                         Divider()
@@ -217,7 +217,7 @@ struct WorkoutDetailView: View {
                             title: "Максимальный",
                             value: "\(calculateMaxHeartRate(diagramData))",
                             unit: "уд/мин",
-                            color: .red
+                            color: Color.mycolor.myRed
                         )
                         
                         Divider()
@@ -227,7 +227,7 @@ struct WorkoutDetailView: View {
                             title: "Минимальный",
                             value: "\(calculateMinHeartRate(diagramData))",
                             unit: "уд/мин",
-                            color: .green
+                            color: Color.mycolor.myGreen
                         )
                     }
                 }
@@ -239,11 +239,11 @@ struct WorkoutDetailView: View {
         VStack(spacing: 20) {
             Image(systemName: "exclamationmark.triangle")
                 .font(.system(size: 60))
-                .foregroundColor(.orange)
+                .foregroundColor(Color.mycolor.myOrange)
             
             Text("Тренировка не найдена")
                 .font(.title2)
-                .foregroundColor(.secondary)
+                .foregroundColor(Color.mycolor.mySecondary)
             
             Button("Повторить") {
                 viewModel.loadData()

@@ -25,14 +25,14 @@ struct HeartRateChartView: View {
         VStack(alignment: .leading, spacing: 12) {
             Text("График пульса")
                 .font(.headline)
-                .foregroundColor(.primary)
+                .foregroundColor(Color.mycolor.myAccent)
             
             Chart(chartData) { point in
                 LineMark(
                     x: .value("Время", point.time),
                     y: .value("Пульс", point.heartRate)
                 )
-                .foregroundStyle(.red)
+                .foregroundStyle(Color.mycolor.myRed)
                 
                 PointMark(
                     x: .value("Время", point.time),
@@ -50,7 +50,7 @@ struct HeartRateChartView: View {
             }
         }
         .padding()
-        .background(Color.gray.opacity(0.05))
+        .background(Color.mycolor.mySecondary.opacity(0.05))
         .clipShape(RoundedRectangle(cornerRadius: 12))
     }
 }

@@ -59,11 +59,11 @@ enum WorkoutActivityType: String, Codable, CaseIterable {
     
     var color: Color {
         switch self {
-        case .walkingRunning: return .blue
-        case .yoga: return .purple
-        case .water: return .cyan
-        case .cycling: return .green
-        case .strength: return .orange
+        case .walkingRunning: return Color.mycolor.myYellow
+        case .yoga: return Color.mycolor.myPurple
+        case .water: return Color.mycolor.myBlue
+        case .cycling: return Color.mycolor.myGreen
+        case .strength: return Color.mycolor.myOrange
         }
     }
     

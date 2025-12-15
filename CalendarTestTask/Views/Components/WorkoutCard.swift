@@ -24,18 +24,18 @@ struct WorkoutCard: View {
             VStack(alignment: .leading, spacing: 4) {
                 Text(workout.workoutActivityType.localizedName)
                     .font(.headline)
-                    .foregroundColor(.primary)
+                    .foregroundColor(Color.mycolor.myAccent)
                 
                 Text(workout.timeString)
                     .font(.subheadline)
-                    .foregroundColor(.secondary)
+                    .foregroundColor(Color.mycolor.mySecondary)
             }
             
             Spacer()
             
             Image(systemName: "chevron.right")
                 .font(.caption)
-                .foregroundColor(.gray)
+                .foregroundColor(Color.mycolor.mySecondary)
         }
         .padding(.vertical, 8)
         .contentShape(Rectangle()) // Делаем всю область кликабельной

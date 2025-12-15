@@ -29,16 +29,15 @@ struct TodayWorkoutsSection: View {
             HStack {
                 Text("Тренировки сегодня")
                     .font(.headline)
-                    .foregroundColor(.primary)
+                    .foregroundColor(Color.mycolor.myAccent)
                 
                 Spacer()
                 
-                if hasWorkoutsToday { // Используем вычисляемое свойство
+                if hasWorkoutsToday {
                     Button("Все") {
-                        viewModel.selectDate(Date()) // Возможно нужно selectDate вместо selectDay
-                    }
+                        viewModel.selectDate(Date())                     }
                     .font(.caption)
-                    .foregroundColor(.blue)
+                    .foregroundColor(Color.mycolor.myBlue)
                 }
             }
             
@@ -52,19 +51,19 @@ struct TodayWorkoutsSection: View {
                     if todaysWorkouts.count > 3 {
                         Text("и еще \(todaysWorkouts.count - 3) тренировок")
                             .font(.caption)
-                            .foregroundColor(.secondary)
+                            .foregroundColor(Color.mycolor.myAccent)
                     }
                 }
             } else {
                 Text("Сегодня нет тренировок")
                     .font(.subheadline)
-                    .foregroundColor(.secondary)
+                    .foregroundColor(Color.mycolor.myAccent)
                     .frame(maxWidth: .infinity, alignment: .center)
                     .padding()
             }
         }
         .padding()
-        .background(Color.gray.opacity(0.05))
+        .background(Color.mycolor.mySecondary.opacity(0.05))
         .clipShape(RoundedRectangle(cornerRadius: 12))
     }
 }
