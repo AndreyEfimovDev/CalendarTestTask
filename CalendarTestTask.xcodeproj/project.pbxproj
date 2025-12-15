@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		4727790D2EEC012000601CED /* CalendarTestTaskApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4727790A2EEC012000601CED /* CalendarTestTaskApp.swift */; };
 		4727790F2EEC012000601CED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 472779092EEC012000601CED /* Assets.xcassets */; };
-		472779122EEC012600601CED /* CalendarTestTaskTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472779102EEC012600601CED /* CalendarTestTaskTests.swift */; };
 		472779162EEC012900601CED /* CalendarTestTaskUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472779132EEC012900601CED /* CalendarTestTaskUITests.swift */; };
 		472779172EEC012900601CED /* CalendarTestTaskUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472779142EEC012900601CED /* CalendarTestTaskUITestsLaunchTests.swift */; };
 		4727791A2EEC016000601CED /* Workout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472779192EEC016000601CED /* Workout.swift */; };
@@ -79,7 +78,6 @@
 		472778F62EEC003E00601CED /* CalendarTestTaskUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CalendarTestTaskUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		472779092EEC012000601CED /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4727790A2EEC012000601CED /* CalendarTestTaskApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTestTaskApp.swift; sourceTree = "<group>"; };
-		472779102EEC012600601CED /* CalendarTestTaskTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTestTaskTests.swift; sourceTree = "<group>"; };
 		472779132EEC012900601CED /* CalendarTestTaskUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTestTaskUITests.swift; sourceTree = "<group>"; };
 		472779142EEC012900601CED /* CalendarTestTaskUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTestTaskUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		472779192EEC016000601CED /* Workout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Workout.swift; sourceTree = "<group>"; };
@@ -190,7 +188,6 @@
 		472779112EEC012600601CED /* CalendarTestTaskTests */ = {
 			isa = PBXGroup;
 			children = (
-				472779102EEC012600601CED /* CalendarTestTaskTests.swift */,
 				4727796D2EEC205000601CED /* CalendarViewModelTests.swift */,
 				47742BA22EEC28980041F6F5 /* HeartRateChartIntegrationTest.swift */,
 			);
@@ -511,7 +508,6 @@
 			files = (
 				4727796E2EEC205000601CED /* CalendarViewModelTests.swift in Sources */,
 				47742BA32EEC28980041F6F5 /* HeartRateChartIntegrationTest.swift in Sources */,
-				472779122EEC012600601CED /* CalendarTestTaskTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
