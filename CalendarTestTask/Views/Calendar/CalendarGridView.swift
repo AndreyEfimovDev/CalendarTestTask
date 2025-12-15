@@ -43,7 +43,9 @@ struct CalendarGridView: View {
                         viewModel: viewModel
                     )
                     .onTapGesture {
-                        viewModel.selectDate(date)
+                        withAnimation {
+                            viewModel.selectDate(date)
+                        }
                     }
                 }
             }

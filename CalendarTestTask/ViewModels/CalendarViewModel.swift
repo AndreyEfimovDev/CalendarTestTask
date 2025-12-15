@@ -80,11 +80,6 @@ class CalendarViewModel: ObservableObject {
                 workouts = try await apiService.fetchWorkouts()
                 print("✅ Данные загружены: \(workouts.count) тренировок")
                 
-//                // Перерисовка
-//                DispatchQueue.main.async {
-                    self.objectWillChange.send()
-//                }
-                
             } catch let apiError as APIError {
                 errorMessage = apiError.description
                 print("❌ API Error: \(apiError.description)")
@@ -122,7 +117,6 @@ class CalendarViewModel: ObservableObject {
     }
     
     func workoutsForDay(_ date: Date) -> [Workout] {
-        let year = Calendar.current.component(.year, from: date)
         
         let filteredWorkouts = workouts.filter { workout in
             Calendar.current.isDate(workout.date, inSameDayAs: date)
@@ -143,13 +137,17 @@ class CalendarViewModel: ObservableObject {
     // MARK: - Month Navigation
     func goToPreviousMonth() {
         if let newDate = Calendar.current.date(byAdding: .month, value: -1, to: currentDate) {
-            currentDate = newDate
+            withAnimation {
+                currentDate = newDate
+            }
         }
     }
     
     func goToNextMonth() {
         if let newDate = Calendar.current.date(byAdding: .month, value: 1, to: currentDate) {
-            currentDate = newDate
+            withAnimation {
+                currentDate = newDate
+            }
         }
     }
     

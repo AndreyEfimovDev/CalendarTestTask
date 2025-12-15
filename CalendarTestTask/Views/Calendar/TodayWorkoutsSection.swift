@@ -14,15 +14,13 @@ struct TodayWorkoutsSection: View {
         _viewModel = ObservedObject(wrappedValue: viewModel)
     }
     
-    // Добавляем вычисляемое свойство
     private var hasWorkoutsToday: Bool {
         return !viewModel.workoutsForDay(Date()).isEmpty
     }
     
-    // Или создаем функцию-хелпер
-    private func hasWorkoutsOnDay(_ date: Date) -> Bool {
-        return !viewModel.workoutsForDay(date).isEmpty
-    }
+//    private func hasWorkoutsOnDay(_ date: Date) -> Bool {
+//        return !viewModel.workoutsForDay(date).isEmpty
+//    }
     
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
@@ -35,7 +33,9 @@ struct TodayWorkoutsSection: View {
                 
                 if hasWorkoutsToday {
                     Button("Все") {
-                        viewModel.selectDate(Date())
+                        withAnimation {
+                            viewModel.selectDate(Date())
+                        }
                     }
                     .font(.caption)
                     .foregroundColor(Color.mycolor.myBlue)

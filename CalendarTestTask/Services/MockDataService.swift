@@ -162,7 +162,7 @@ class MockDataService: APIServiceProtocol {
             let data = try Data(contentsOf: url)
             print("✅ Файл найден, размер: \(data.count) байт")
             
-            // Пробуем прочитать как raw JSON
+            // Пробуем читать как raw JSON
             if let json = try JSONSerialization.jsonObject(with: data) as? [String: Any] {
                 print("✅ JSON успешно прочитан")
                 

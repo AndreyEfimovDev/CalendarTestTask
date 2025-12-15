@@ -28,12 +28,4 @@ struct Workout: Identifiable, Codable, Hashable {
         formatter.locale = Locale(identifier: "ru_RU")
         return formatter.string(from: workoutStartDate)
     }
-    
-//    func hash(into hasher: inout Hasher) {
-//        hasher.combine(id)
-//    }
-//    
-//    static func == (lhs: Workout, rhs: Workout) -> Bool {
-//        lhs.id == rhs.id
-//    }
 }
