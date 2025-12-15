@@ -69,13 +69,12 @@ struct DayWorkoutsSection: View {
     ]
     let mockCoordinator = AppCoordinator(apiService: MockDataService())
     
-    // Оборачиваем в NavigationStack и добавляем environmentObject
       NavigationStack {
           DayWorkoutsSection(
               date: Date(),
               workouts: workouts
           )
-          .environmentObject(mockCoordinator) // ✅ Добавляем координатор
+          .environmentObject(mockCoordinator)
       }
       .padding()
 }
@@ -90,7 +89,7 @@ struct DayWorkoutsSection: View {
                 date: Date(),
                 workouts: []
             )
-            .environmentObject(mockCoordinator) // ✅ Добавляем координатор
+            .environmentObject(mockCoordinator)
         }
         .padding()
 }

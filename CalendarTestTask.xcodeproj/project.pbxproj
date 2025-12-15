@@ -45,6 +45,8 @@
 		472779692EEC1E7600601CED /* SimpleTestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472779682EEC1E7600601CED /* SimpleTestService.swift */; };
 		4727796B2EEC1FF300601CED /* HeartRateChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4727796A2EEC1FF300601CED /* HeartRateChartView.swift */; };
 		4727796E2EEC205000601CED /* CalendarViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4727796D2EEC205000601CED /* CalendarViewModelTests.swift */; };
+		473C528C2EF09FB00006B2A4 /* CalendarContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473C528B2EF09FB00006B2A4 /* CalendarContainerView.swift */; };
+		473C528E2EF0A00C0006B2A4 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473C528D2EF0A00C0006B2A4 /* Enums.swift */; };
 		47742BA32EEC28980041F6F5 /* HeartRateChartIntegrationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47742BA22EEC28980041F6F5 /* HeartRateChartIntegrationTest.swift */; };
 		479EFC1D2EF01B5100C0A9C7 /* DayWorkoutsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 479EFC1C2EF01B5100C0A9C7 /* DayWorkoutsSection.swift */; };
 		479EFC1F2EF0220B00C0A9C7 /* WorkoutCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 479EFC1E2EF0220B00C0A9C7 /* WorkoutCard.swift */; };
@@ -108,6 +110,8 @@
 		472779682EEC1E7600601CED /* SimpleTestService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleTestService.swift; sourceTree = "<group>"; };
 		4727796A2EEC1FF300601CED /* HeartRateChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartRateChartView.swift; sourceTree = "<group>"; };
 		4727796D2EEC205000601CED /* CalendarViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModelTests.swift; sourceTree = "<group>"; };
+		473C528B2EF09FB00006B2A4 /* CalendarContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarContainerView.swift; sourceTree = "<group>"; };
+		473C528D2EF0A00C0006B2A4 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Enums.swift; path = CalendarTestTask/App/Enums.swift; sourceTree = SOURCE_ROOT; };
 		47742BA22EEC28980041F6F5 /* HeartRateChartIntegrationTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartRateChartIntegrationTest.swift; sourceTree = "<group>"; };
 		479EFC1C2EF01B5100C0A9C7 /* DayWorkoutsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayWorkoutsSection.swift; sourceTree = "<group>"; };
 		479EFC1E2EF0220B00C0A9C7 /* WorkoutCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutCard.swift; sourceTree = "<group>"; };
@@ -207,6 +211,7 @@
 				472779192EEC016000601CED /* Workout.swift */,
 				4727791B2EEC019400601CED /* WorkoutMetadata.swift */,
 				4727791D2EEC01BE00601CED /* DiagramData.swift */,
+				473C528D2EF0A00C0006B2A4 /* Enums.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -282,6 +287,7 @@
 			isa = PBXGroup;
 			children = (
 				472779222EEC04F100601CED /* AppCoordinator.swift */,
+				473C528B2EF09FB00006B2A4 /* CalendarContainerView.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -486,10 +492,12 @@
 				472779322EEC087800601CED /* CalendarDayView.swift in Sources */,
 				4727795D2EEC195400601CED /* TodayWorkoutsSection.swift in Sources */,
 				4727792B2EEC078600601CED /* CalendarView.swift in Sources */,
+				473C528E2EF0A00C0006B2A4 /* Enums.swift in Sources */,
 				4727794D2EEC115100601CED /* WorkoutDetailViewModel.swift in Sources */,
 				472779212EEC01F100601CED /* APIService.swift in Sources */,
 				479EFC242EF032C300C0A9C7 /* UnderlineSermentedPickerNotOptional.swift in Sources */,
 				4727796B2EEC1FF300601CED /* HeartRateChartView.swift in Sources */,
+				473C528C2EF09FB00006B2A4 /* CalendarContainerView.swift in Sources */,
 				4727791C2EEC019400601CED /* WorkoutMetadata.swift in Sources */,
 				4727793F2EEC09AB00601CED /* LoadingView.swift in Sources */,
 				479EFC212EF0323000C0A9C7 /* PreferencesView.swift in Sources */,

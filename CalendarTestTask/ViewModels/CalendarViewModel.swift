@@ -62,10 +62,10 @@ class CalendarViewModel: ObservableObject {
             self.currentDate = Date()
         }
         
-        // ✅ Восстанавливаем выбранную дату из координатора
+        // Восстанавливаем выбранную дату из координатора
         if let coordinatorDate = coordinator?.selectedDate {
             self.selectedDate = coordinatorDate
-            self.currentDate = coordinatorDate // Также обновляем текущий месяц
+            self.currentDate = coordinatorDate
         }
         
         loadWorkouts()
@@ -80,10 +80,10 @@ class CalendarViewModel: ObservableObject {
                 workouts = try await apiService.fetchWorkouts()
                 print("✅ Данные загружены: \(workouts.count) тренировок")
                 
-                // Перерисовка
-                DispatchQueue.main.async {
+//                // Перерисовка
+//                DispatchQueue.main.async {
                     self.objectWillChange.send()
-                }
+//                }
                 
             } catch let apiError as APIError {
                 errorMessage = apiError.description
@@ -115,49 +115,18 @@ class CalendarViewModel: ObservableObject {
     }
     
     
-    // Метод для получения тренировок на конкретную дату
     func workoutsForDate(_ date: Date) -> [Workout] {
         return workouts.filter { workout in
             Calendar.current.isDate(workout.date, inSameDayAs: date)
         }
     }
     
-    //    func workoutsForDay(_ date: Date) -> [Workout] {
-    //        let filteredWorkouts = workouts.filter { workout in
-    //            Calendar.current.isDate(workout.date, inSameDayAs: date)
-    //        }
-    //
-    //        // ОТЛАДКА для дней 21-25 ноября
-    //        let day = Calendar.current.component(.day, from: date)
-    //        let month = Calendar.current.component(.month, from: date)
-    //        if month == 11 && (21...25).contains(day) {
-    //            print("🔍 workoutsForDay(\(day).11.2025): \(filteredWorkouts.count) тренировок")
-    //            for workout in filteredWorkouts {
-    //                print("   - \(workout.workoutActivityType.rawValue) в \(workout.timeString)")
-    //            }
-    //        }
-    //
-    //        return filteredWorkouts
-    //    }
-    
     func workoutsForDay(_ date: Date) -> [Workout] {
-        //        // ОТЛАДКА
-        //        let day = Calendar.current.component(.day, from: date)
-        //        let month = Calendar.current.component(.month, from: date)
-        //        let year = Calendar.current.component(.year, from: date)
+        let year = Calendar.current.component(.year, from: date)
         
         let filteredWorkouts = workouts.filter { workout in
             Calendar.current.isDate(workout.date, inSameDayAs: date)
         }
-        
-        //        // Отладка для всех дней 21-25
-        //        if (21...25).contains(day) {
-        //            print("📅 \(day).\(month).\(year): \(filteredWorkouts.count) тренировок")
-        //            if filteredWorkouts.count > 0 {
-        //                print("   Типы: \(filteredWorkouts.map { $0.workoutActivityType.rawValue })")
-        //            }
-        //        }
-        
         return filteredWorkouts
     }
     
@@ -229,19 +198,16 @@ class CalendarViewModel: ObservableObject {
         Calendar.current.isDate(date, equalTo: currentDate, toGranularity: .month)
     }
     
-    // ✅ Обновленный метод выбора даты
     func selectDate(_ date: Date) {
         selectedDate = date
-        coordinator?.selectedDate = date // ✅ Сохраняем в координаторе
+        coordinator?.selectedDate = date
     }
     
-    // ✅ Обновленный метод сброса
     func resetSelectedDate() {
         selectedDate = nil
-        coordinator?.selectedDate = nil // ✅ Сбрасываем в координаторе
+        coordinator?.selectedDate = nil
     }
     
-    // ✅ Новый метод: синхронизация с координатором
     func syncWithCoordinator() {
         if let coordinatorDate = coordinator?.selectedDate {
             selectedDate = coordinatorDate
@@ -256,8 +222,7 @@ class CalendarViewModel: ObservableObject {
 #if DEBUG || TESTING
     func setTestWorkouts(_ workouts: [Workout]) {
         self.workouts = workouts
-        //        self.filteredWorkouts = workouts // если есть такое свойство
-        self.isLoading = false // если есть индикатор загрузки
+        self.isLoading = false
     }
 #endif
 

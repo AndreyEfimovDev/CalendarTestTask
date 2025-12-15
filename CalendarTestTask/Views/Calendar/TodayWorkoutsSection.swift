@@ -35,7 +35,8 @@ struct TodayWorkoutsSection: View {
                 
                 if hasWorkoutsToday {
                     Button("Все") {
-                        viewModel.selectDate(Date())                     }
+                        viewModel.selectDate(Date())
+                    }
                     .font(.caption)
                     .foregroundColor(Color.mycolor.myBlue)
                 }
@@ -69,6 +70,38 @@ struct TodayWorkoutsSection: View {
 }
 
 
-#Preview {
-//    TodayWorkoutsSection()
+#Preview("С одной тренировкой") {
+    class SingleWorkoutAPIService: APIServiceProtocol {
+        func fetchWorkouts() async throws -> [Workout] {
+            return [
+                Workout(
+                    id: "1",
+                    workoutActivityType: .yoga,
+                    workoutStartDate: Date()
+                )
+            ]
+        }
+        
+        func fetchWorkouts(for date: Date) async throws -> [Workout] {
+            return try await fetchWorkouts()
+        }
+        
+        func fetchMetadata(for workoutId: String) async throws -> WorkoutMetadata? {
+            return nil
+        }
+        
+        func fetchDiagramData(for workoutId: String) async throws -> [DiagramData]? {
+            return nil
+        }
+    }
+    
+    let service = SingleWorkoutAPIService()
+    let viewModel = CalendarViewModel(apiService: service)
+    
+    return TodayWorkoutsSection(viewModel: viewModel)
+        .padding()
+        .background(Color.gray.opacity(0.05))
 }
+
+
+

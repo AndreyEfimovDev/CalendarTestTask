@@ -44,6 +44,18 @@ struct CalendarHeader: View {
 }
 
 #Preview {
-//    CalendarHeader()
+    CalendarHeader(
+        monthYear: "Ноябрь 2025",
+        onPrevious: {
+            print("Нажата кнопка назад")
+        },
+        onNext: {
+            print("Нажата кнопка вперед")
+        },
+        onToday: {
+            print("Нажата кнопка Сегодня")
+        }
+    )
+    .padding()
+    .background(Color.gray.opacity(0.05))
 }
-
