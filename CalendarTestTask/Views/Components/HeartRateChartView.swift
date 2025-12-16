@@ -242,7 +242,7 @@ struct HeartRatePoint: Identifiable {
     
 
     return NavigationStack {
-        WorkoutDetailView(viewModel: viewModel)
+        DayEventsView(viewModel: viewModel)
     }
 }
 

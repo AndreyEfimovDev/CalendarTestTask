@@ -89,7 +89,7 @@ class SimpleTestService: APIServiceProtocol {
     )
     
     return NavigationStack {
-        WorkoutDetailView(viewModel: viewModel)
+        DayEventsView(viewModel: viewModel)
             .environmentObject(coordinator)
     }
 }
@@ -108,7 +108,7 @@ class SimpleTestService: APIServiceProtocol {
     )
     
     return NavigationStack {
-        WorkoutDetailView(viewModel: viewModel)
+        DayEventsView(viewModel: viewModel)
             .environmentObject(coordinator)
     }
 }
@@ -128,7 +128,7 @@ class SimpleTestService: APIServiceProtocol {
     )
     
     return NavigationStack {
-        WorkoutDetailView(viewModel: viewModel)
+        DayEventsView(viewModel: viewModel)
             .environmentObject(coordinator)
             .onAppear {
                 print("🔄 SimpleTest Preview загружен")
@@ -150,7 +150,7 @@ class SimpleTestService: APIServiceProtocol {
     )
     
     return NavigationStack {
-        WorkoutDetailView(viewModel: viewModel)
+        DayEventsView(viewModel: viewModel)
             .environmentObject(coordinator)
             .onAppear {
                 print("🔄 Real Data Preview загружен")
