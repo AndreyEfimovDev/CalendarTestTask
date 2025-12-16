@@ -17,7 +17,6 @@ struct CalendarHeader: View {
     @State private var isNextPressed = false
     @State private var isTodayPressed = false
 
-    
     var body: some View {
         HStack(spacing: 0) {
             Button(action: onPrevious) {

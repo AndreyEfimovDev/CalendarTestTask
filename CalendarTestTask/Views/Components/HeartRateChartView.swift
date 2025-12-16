@@ -38,7 +38,7 @@ struct HeartRateChartView: View {
                     x: .value("Время", point.time),
                     y: .value("Пульс", point.heartRate)
                 )
-                .foregroundStyle(.red)
+                .foregroundStyle(Color.mycolor.myRed)
                 .symbolSize(50)
             }
             .frame(height: 200)
