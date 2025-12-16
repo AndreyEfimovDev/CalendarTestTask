@@ -37,7 +37,7 @@ struct CalendarView: View {
                     
                     CalendarGridView(viewModel: viewModel)
                     
-                    DayWorkoutsSection(
+                    DayEventsView(
                         date: viewModel.selectedDate ?? coordinator.initialCalendarDate,
                         workouts: viewModel.workoutsForDay(
                             viewModel.selectedDate ?? coordinator.initialCalendarDate

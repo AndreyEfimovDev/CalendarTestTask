@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct DayWorkoutsSection: View {
+struct DayEventsView: View {
     let date: Date
     let workouts: [Workout]
     
@@ -70,7 +70,7 @@ struct DayWorkoutsSection: View {
     let mockCoordinator = AppCoordinator(apiService: MockDataService())
     
       NavigationStack {
-          DayWorkoutsSection(
+          DayEventsView(
               date: Date(),
               workouts: workouts
           )
@@ -85,7 +85,7 @@ struct DayWorkoutsSection: View {
     let mockCoordinator = AppCoordinator(apiService: MockDataService())
     
     NavigationStack {
-            DayWorkoutsSection(
+            DayEventsView(
                 date: Date(),
                 workouts: []
             )

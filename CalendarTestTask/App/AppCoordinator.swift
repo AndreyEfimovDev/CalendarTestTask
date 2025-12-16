@@ -44,13 +44,13 @@ class AppCoordinator: ObservableObject {
     // Метод для навигации к деталям тренировки
     @ViewBuilder
     func workoutDetailView(for workout: Workout) -> some View {
-        DayEventsView(viewModel: WorkoutDetailViewModel(workout: workout, apiService: apiService))
+        WorkoutDetailView(viewModel: WorkoutDetailViewModel(workout: workout, apiService: apiService))
     }
     
     // Метод для навигации к деталям тренировки по ID
     @ViewBuilder
     func workoutDetailView(for workoutId: String) -> some View {
-        DayEventsView(viewModel: WorkoutDetailViewModel(workoutId: workoutId, apiService: apiService))
+        WorkoutDetailView(viewModel: WorkoutDetailViewModel(workoutId: workoutId, apiService: apiService))
     }
     
     // Корневое представление
