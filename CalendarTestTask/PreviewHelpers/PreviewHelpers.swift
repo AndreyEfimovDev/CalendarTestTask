@@ -37,15 +37,15 @@ struct PreviewWrapper<Content: View>: View {
         return CalendarView(viewModel: viewModel)
     }
 }
-
-#Preview("Day Events View") {
-    PreviewWrapper {
-        let apiService = MockDataService()
-        let viewModel = DayEventsViewModel(
-            date: Date(),
-            apiService: apiService
-        )
-        
-        return DayEventsView(viewModel: viewModel)
-    }
-}
+//
+//#Preview("Day Events View") {
+//    PreviewWrapper {
+//        let apiService = MockDataService()
+//        let viewModel = DayEventsViewModel(
+//            date: Date(),
+//            apiService: apiService
+//        )
+//        
+//        return DayEventsView(viewModel: viewModel)
+//    }
+//}

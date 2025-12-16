@@ -36,10 +36,10 @@ class AppCoordinator: ObservableObject {
     }
     
     // Метод для навигации к тренировкам дня
-    @ViewBuilder
-    func dayEventsView(for date: Date) -> some View {
-        DayEventsView(viewModel: DayEventsViewModel(date: date, apiService: apiService))
-    }
+//    @ViewBuilder
+//    func dayEventsView(for date: Date) -> some View {
+//        DayEventsView(viewModel: DayEventsViewModel(date: date, apiService: apiService))
+//    }
     
     // Метод для навигации к деталям тренировки
     @ViewBuilder

@@ -242,6 +242,7 @@
 			children = (
 				4727792A2EEC078600601CED /* CalendarView.swift */,
 				472779422EEC0CCE00601CED /* DayEventsView.swift */,
+				479EFC1C2EF01B5100C0A9C7 /* DayWorkoutsSection.swift */,
 				472779462EEC0D2F00601CED /* WorkoutDetailView.swift */,
 				472779482EEC0E4100601CED /* Calendar */,
 				4727792C2EEC07E700601CED /* Components */,
@@ -257,7 +258,6 @@
 				4727792D2EEC080900601CED /* CalendarHeader.swift */,
 				4727793E2EEC09AB00601CED /* LoadingView.swift */,
 				4727796A2EEC1FF300601CED /* HeartRateChartView.swift */,
-				479EFC1C2EF01B5100C0A9C7 /* DayWorkoutsSection.swift */,
 				479EFC1E2EF0220B00C0A9C7 /* WorkoutCard.swift */,
 			);
 			path = Components;
@@ -406,7 +406,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 2610;
-				LastUpgradeCheck = 2610;
+				LastUpgradeCheck = 2620;
 				TargetAttributes = {
 					472778DE2EEC003900601CED = {
 						CreatedOnToolsVersion = 26.1.1;
@@ -611,6 +611,7 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -668,6 +669,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				VALIDATE_PRODUCT = YES;
 			};
