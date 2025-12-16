@@ -18,10 +18,6 @@ struct TodayWorkoutsSection: View {
         return !viewModel.workoutsForDay(Date()).isEmpty
     }
     
-//    private func hasWorkoutsOnDay(_ date: Date) -> Bool {
-//        return !viewModel.workoutsForDay(date).isEmpty
-//    }
-    
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             HStack {

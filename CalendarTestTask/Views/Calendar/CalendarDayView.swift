@@ -47,9 +47,6 @@ struct CalendarDayView: View {
         }
         .frame(height: 30)
         .opacity(isCurrentMonth ? 1.0 : 0.4)
-//        .background(
-//            hasWorkouts ? Color.mycolor.myGreen.opacity(0.15) : Color.clear
-//        )
         .cornerRadius(8)
     }
     
