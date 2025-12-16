@@ -1,5 +1,5 @@
 //
-//   DayWorkoutsSection.swift
+//  DayEventsView.swift
 //  CalendarTestTask
 //
 //  Created by Andrey Efimov on 15.12.2025.
