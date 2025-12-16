@@ -182,8 +182,8 @@ class CalendarViewModel: ObservableObject {
     
     func weekdayOffset() -> Int {
         let calendar = Calendar.current
-        let firstDay = firstDayOfMonth()
-        let weekday = calendar.component(.weekday, from: firstDay)
+        let firstDay = firstDayOfMonth() // Получаем первый день месяца
+        let weekday = calendar.component(.weekday, from: firstDay) // Получаем день недели
         // Adjust for Monday as first day (1 = Monday, 7 = Sunday)
         return (weekday + 5) % 7
     }
@@ -211,7 +211,6 @@ class CalendarViewModel: ObservableObject {
             selectedDate = coordinatorDate
         }
     }
-    
     
     func setWorkouts(_ workouts: [Workout]) {
         self.workouts = workouts

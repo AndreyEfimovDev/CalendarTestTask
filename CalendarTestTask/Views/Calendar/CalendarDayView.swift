@@ -41,15 +41,15 @@ struct CalendarDayView: View {
             Text("\(dayNumber)")
                 .font(.system(size: 16, weight: .medium))
                 .foregroundColor(textColor)
-                .frame(width: 32, height: 32)
+                .frame(width: 30, height: 30)
                 .background(circleBackground)
                 .clipShape(Circle())
         }
         .frame(height: 30)
         .opacity(isCurrentMonth ? 1.0 : 0.4)
-        .background(
-            hasWorkouts ? Color.mycolor.myGreen.opacity(0.15) : Color.clear
-        )
+//        .background(
+//            hasWorkouts ? Color.mycolor.myGreen.opacity(0.15) : Color.clear
+//        )
         .cornerRadius(8)
     }
     
