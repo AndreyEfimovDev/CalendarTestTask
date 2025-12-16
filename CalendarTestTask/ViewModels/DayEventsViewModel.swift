@@ -28,7 +28,7 @@ class DayEventsViewModel: ObservableObject {
             errorMessage = nil
             
             do {
-                workouts = try await apiService.fetchWorkouts(for: date)
+                workouts = try await apiService.fetchWorkouts(for: date) // Не блокируем главный поток во время ожидания, освобождается для других задач UI
                 print("📅 DayEventsView загружено тренировок для \(formattedDate): \(workouts.count)")
                 for workout in workouts {
                     print("   - \(workout.timeString): \(workout.workoutActivityType.localizedName)")
