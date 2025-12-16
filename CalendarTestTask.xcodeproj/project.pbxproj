@@ -46,7 +46,7 @@
 		473C528C2EF09FB00006B2A4 /* CalendarContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473C528B2EF09FB00006B2A4 /* CalendarContainerView.swift */; };
 		473C528E2EF0A00C0006B2A4 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473C528D2EF0A00C0006B2A4 /* Enums.swift */; };
 		47742BA32EEC28980041F6F5 /* HeartRateChartIntegrationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47742BA22EEC28980041F6F5 /* HeartRateChartIntegrationTest.swift */; };
-		479EFC1D2EF01B5100C0A9C7 /* DayWorkoutsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 479EFC1C2EF01B5100C0A9C7 /* DayWorkoutsSection.swift */; };
+		479EFC1D2EF01B5100C0A9C7 /* DayEventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 479EFC1C2EF01B5100C0A9C7 /* DayEventsView.swift */; };
 		479EFC1F2EF0220B00C0A9C7 /* WorkoutCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 479EFC1E2EF0220B00C0A9C7 /* WorkoutCard.swift */; };
 		479EFC212EF0323000C0A9C7 /* PreferencesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 479EFC202EF0323000C0A9C7 /* PreferencesView.swift */; };
 		479EFC242EF032C300C0A9C7 /* UnderlineSermentedPickerNotOptional.swift in Sources */ = {isa = PBXBuildFile; fileRef = 479EFC232EF032C300C0A9C7 /* UnderlineSermentedPickerNotOptional.swift */; };
@@ -109,7 +109,7 @@
 		473C528B2EF09FB00006B2A4 /* CalendarContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarContainerView.swift; sourceTree = "<group>"; };
 		473C528D2EF0A00C0006B2A4 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Enums.swift; path = CalendarTestTask/App/Enums.swift; sourceTree = SOURCE_ROOT; };
 		47742BA22EEC28980041F6F5 /* HeartRateChartIntegrationTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartRateChartIntegrationTest.swift; sourceTree = "<group>"; };
-		479EFC1C2EF01B5100C0A9C7 /* DayWorkoutsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayWorkoutsSection.swift; sourceTree = "<group>"; };
+		479EFC1C2EF01B5100C0A9C7 /* DayEventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayEventsView.swift; sourceTree = "<group>"; };
 		479EFC1E2EF0220B00C0A9C7 /* WorkoutCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutCard.swift; sourceTree = "<group>"; };
 		479EFC202EF0323000C0A9C7 /* PreferencesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesView.swift; sourceTree = "<group>"; };
 		479EFC232EF032C300C0A9C7 /* UnderlineSermentedPickerNotOptional.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlineSermentedPickerNotOptional.swift; sourceTree = "<group>"; };
@@ -236,7 +236,7 @@
 			isa = PBXGroup;
 			children = (
 				4727792A2EEC078600601CED /* CalendarView.swift */,
-				479EFC1C2EF01B5100C0A9C7 /* DayWorkoutsSection.swift */,
+				479EFC1C2EF01B5100C0A9C7 /* DayEventsView.swift */,
 				472779462EEC0D2F00601CED /* WorkoutDetailView.swift */,
 				472779482EEC0E4100601CED /* Calendar */,
 				4727792C2EEC07E700601CED /* Components */,
@@ -497,7 +497,7 @@
 				4727791A2EEC016000601CED /* Workout.swift in Sources */,
 				4727794B2EEC0F5900601CED /* DayEventsViewModel.swift in Sources */,
 				472779232EEC04F100601CED /* AppCoordinator.swift in Sources */,
-				479EFC1D2EF01B5100C0A9C7 /* DayWorkoutsSection.swift in Sources */,
+				479EFC1D2EF01B5100C0A9C7 /* DayEventsView.swift in Sources */,
 				479EFC1F2EF0220B00C0A9C7 /* WorkoutCard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
