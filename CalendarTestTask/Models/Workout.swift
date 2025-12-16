@@ -12,7 +12,7 @@ struct Workout: Identifiable, Codable, Hashable {
     let workoutActivityType: WorkoutActivityType
     let workoutStartDate: Date
     
-    var date: Date {
+    var date: Date { // возвращаем дату без времени (начало дня)
         Calendar.current.startOfDay(for: workoutStartDate)
     }
     
